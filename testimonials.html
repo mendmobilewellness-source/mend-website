@@ -1,0 +1,420 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Testimonials | Mend Mobile Wellness &amp; Recovery</title>
+    <meta name="description" content="Real results from real clients. Hear what people are saying about mobile PEMF therapy sessions with Mend in West LA.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'navy-dark': '#F5F0E8',
+                        'navy-card': '#EDE5D8',
+                        'navy-light': '#E4DAC8',
+                        'gold': '#7a9e7e',
+                        'gold-light': '#9ab89e',
+                        'blue-accent': '#7a9e7e',
+                        'text-muted': '#5a6e5c',
+                    },
+                    fontFamily: {
+                        heading: ['"Inter"', 'serif'],
+                        body: ['"DM Sans"', 'sans-serif'],
+                    },
+                    maxWidth: {
+                        container: '1200px',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --c-gold: #7a9e7e;
+            --c-gold-glow: rgba(122,158,126,0.4);
+            --c-navy-dark: #F5F0E8;
+            --c-navy-card: #EDE5D8;
+            --trans: all 0.4s cubic-bezier(0.25,1,0.5,1);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: #F5F0E8;
+            font-family: 'DM Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        .grad-gold { background: linear-gradient(135deg, #7a9e7e 0%, #9ab89e 100%); }
+
+        .btn-gold {
+            background: linear-gradient(135deg, #7a9e7e 0%, #9ab89e 100%);
+            box-shadow: 0 4px 20px rgba(122,158,126,0.4);
+            transition: var(--trans);
+        }
+        .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(122,158,126,0.5); }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid #7a9e7e;
+            transition: var(--trans);
+            color: #2C3338;
+        }
+        .btn-outline:hover { border-color: #7a9e7e; color: #7a9e7e; }
+
+        .nav-link { position: relative; }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px; left: 0;
+            width: 0; height: 2px;
+            background: var(--c-gold);
+            transition: var(--trans);
+        }
+        .nav-link:hover::after { width: 100%; }
+        .nav-link.active::after { width: 100%; }
+
+        .header-scrolled {
+            background: rgba(245,240,232,0.98) !important;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .mobile-menu {
+            transform: translateY(-150%);
+            transition: var(--trans);
+        }
+        .mobile-menu.open { transform: translateY(0); }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        #heroCanvas {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @keyframes pulse-ring {
+            0% { box-shadow: 0 0 0 0 rgba(122,158,126,0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(122,158,126,0); }
+            100% { box-shadow: 0 0 0 0 rgba(122,158,126,0); }
+        }
+        .pulse-badge { animation: pulse-ring 2s infinite; }
+
+        section { border-bottom: 1px solid rgba(0,0,0,0.06); }
+
+        /* Instagram embed container */
+        .ig-embed-wrap {
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+        }
+        .ig-embed-wrap .instagram-media {
+            margin: 0 !important;
+            min-width: unset !important;
+            width: 100% !important;
+            max-width: 400px !important;
+            border-radius: 12px !important;
+            overflow: hidden;
+        }
+    </style>
+</head>
+<body class="text-[#2C3338]">
+
+<!-- ===================== HEADER ===================== -->
+<header id="header" class="fixed top-0 w-full z-50 h-20 border-b border-black/5 transition-all duration-300" style="background: rgba(245,240,232,0.95); backdrop-filter: blur(12px);">
+    <div class="max-w-container mx-auto px-6 h-full flex items-center justify-between">
+        <a href="index.html" style="text-decoration: none;">
+            <img src="MEND_LOGO_TRANSPARENT.png" alt="Mend Mobile Wellness &amp; Recovery" class="h-24 md:h-28 w-auto">
+        </a>
+        <nav class="hidden md:flex items-center gap-8">
+            <a href="index.html#home"    class="nav-link text-[#2C3338] hover:text-gold text-[0.95rem] font-medium transition-colors" style="text-decoration:none;">Home</a>
+            <a href="conditions.html"   class="nav-link text-[#2C3338] hover:text-gold text-[0.95rem] font-medium transition-colors" style="text-decoration:none;">Conditions</a>
+            <a href="index.html#process" class="nav-link text-[#2C3338] hover:text-gold text-[0.95rem] font-medium transition-colors" style="text-decoration:none;">How It Works</a>
+            <a href="testimonials.html"  class="nav-link active text-gold text-[0.95rem] font-medium" style="text-decoration:none;">Testimonials</a>
+            <a href="pricing.html"       class="nav-link text-[#2C3338] hover:text-gold text-[0.95rem] font-medium transition-colors" style="text-decoration:none;">Pricing</a>
+            <a href="about.html"         class="nav-link text-[#2C3338] hover:text-gold text-[0.95rem] font-medium transition-colors" style="text-decoration:none;">About</a>
+            <a href="https://calendly.com/mendmobilewellness/mend-first-time-pemf-session-60-mins-clone?back=1&month=2026-04" class="btn-gold px-6 py-2.5 rounded text-[0.8rem] font-bold uppercase tracking-wider" style="text-decoration:none; color:#ffffff;">Book Now</a>
+        </nav>
+        <button id="mobileToggle" class="md:hidden text-gold w-11 h-11 flex items-center justify-center" aria-label="Toggle menu">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round"/>
+            </svg>
+        </button>
+    </div>
+</header>
+
+<!-- Mobile Menu -->
+<div id="mobileMenu" class="mobile-menu fixed w-full z-40 flex flex-col gap-4 p-6 border-b border-black/5" style="top:80px; background: rgba(245,240,232,0.97); backdrop-filter: blur(12px);">
+    <a href="index.html#home"    class="text-[#2C3338] font-medium py-3 border-b border-black/10 hover:text-gold transition-colors" style="text-decoration:none;">Home</a>
+    <a href="conditions.html"   class="text-[#2C3338] font-medium py-3 border-b border-black/10 hover:text-gold transition-colors" style="text-decoration:none;">Conditions</a>
+    <a href="index.html#process" class="text-[#2C3338] font-medium py-3 border-b border-black/10 hover:text-gold transition-colors" style="text-decoration:none;">How It Works</a>
+    <a href="testimonials.html"  class="text-gold font-medium py-3 border-b border-black/10" style="text-decoration:none;">Testimonials</a>
+    <a href="pricing.html"       class="text-[#2C3338] font-medium py-3 border-b border-black/10 hover:text-gold transition-colors" style="text-decoration:none;">Pricing</a>
+    <a href="about.html"         class="text-[#2C3338] font-medium py-3 border-b border-black/10 hover:text-gold transition-colors" style="text-decoration:none;">About</a>
+    <a href="https://calendly.com/mendmobilewellness/mend-first-time-pemf-session-60-mins-clone?back=1&month=2026-04" class="btn-gold text-center py-3 rounded text-[0.8rem] font-bold uppercase tracking-wider mt-1" style="text-decoration:none; color:#ffffff;">Book Consultation</a>
+</div>
+
+<!-- ===================== HERO ===================== -->
+<section class="relative flex items-center overflow-hidden pt-20" style="min-height:38vh; background: linear-gradient(135deg, #F5F0E8 0%, #EDE5D8 100%); border-bottom: none;">
+    <canvas id="heroCanvas"></canvas>
+    <div class="max-w-container mx-auto px-4 md:px-6 py-12 md:py-16 text-center relative z-10 w-full">
+        <span class="block text-gold text-[0.8rem] md:text-[0.9rem] font-bold uppercase tracking-[2px] mb-4">Real People. Real Results.</span>
+        <h1 class="font-heading text-[2rem] md:text-[3rem] leading-[1.2] mb-4 text-[#2C3338]">Client Testimonials</h1>
+        <p class="text-[#5a6e5c] text-[1rem] md:text-[1.2rem] max-w-2xl mx-auto">Hear directly from clients who have experienced mobile PEMF therapy with Mend.</p>
+        <div class="inline-flex items-center gap-3 px-6 py-3 rounded-full mt-6 border" style="background:#EDE5D8; border: 1px solid rgba(122,158,126,0.4);">
+            <span class="text-gold font-bold">5.0/5</span>
+            <span class="text-gold tracking-widest">★★★★★</span>
+            <span class="text-[#5a6e5c]">on Google</span>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== VIDEO TESTIMONIALS ===================== -->
+<section class="py-10 md:py-[70px]">
+    <div class="max-w-container mx-auto px-4 md:px-6">
+
+        <div class="text-center max-w-[700px] mx-auto mb-10 md:mb-14 reveal">
+            <h2 class="font-heading text-[1.6rem] md:text-[2.2rem] text-[#2C3338] mb-3">Video Reviews</h2>
+            <p class="text-[#5a6e5c] text-[0.95rem] md:text-[1.05rem]">Watch clients share their experience in their own words.</p>
+        </div>
+
+        <!-- Video grid — add more cards below as you collect them -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 md:gap-10">
+
+            <!-- ===================== VIDEO CARD: ALEX ===================== -->
+            <div class="reveal flex flex-col rounded-2xl border overflow-hidden" style="background:#EDE5D8; border-color: rgba(122,158,126,0.2); box-shadow: 0 10px 40px rgba(0,0,0,0.07);">
+                <div style="border-radius:12px 12px 0 0; overflow:hidden; background:#000;">
+                    <video
+                        controls
+                        playsinline
+                        preload="metadata"
+                        style="width:100%; display:block; max-height:520px; object-fit:cover;">
+                        <source src="Alex Testimonial.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="px-5 pb-6 pt-2">
+                    <div class="text-gold tracking-widest text-sm mb-2">★★★★★</div>
+                    <p class="font-heading text-[#2C3338] font-semibold text-[1rem] mb-1">Alex</p>
+                    <p class="text-[#7a9e7e] text-[0.8rem] uppercase tracking-wider font-semibold">Former Professional Soccer Player · Shoulder Injury Recovery</p>
+                </div>
+            </div>
+
+            <!-- ===================== ADD MORE VIDEO CARDS HERE ===================== -->
+            <!-- Copy the block above and replace the instagram-media permalink and client details -->
+
+        </div>
+    </div>
+</section>
+
+<!-- ===================== WRITTEN TESTIMONIALS ===================== -->
+<section class="py-10 md:py-[70px]" style="background: rgba(237,229,216,0.4);">
+    <div class="max-w-container mx-auto px-4 md:px-6">
+
+        <div class="text-center max-w-[700px] mx-auto mb-10 md:mb-14 reveal">
+            <h2 class="font-heading text-[1.6rem] md:text-[2.2rem] text-[#2C3338] mb-3">Written Reviews</h2>
+            <p class="text-[#5a6e5c] text-[0.95rem] md:text-[1.05rem]">From Google and direct client feedback.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+
+            <!-- Caitlin Tinney -->
+            <div class="reveal rounded-xl p-6 md:p-8 border flex flex-col" style="background:#EDE5D8; border-color: rgba(122,158,126,0.2);">
+                <div class="text-gold tracking-widest mb-4">★★★★★</div>
+                <p class="text-[#5a6e5c] text-[0.95rem] italic leading-relaxed flex-1 mb-6">"I love this in home service so much, and Sage is an absolute gem! He is prompt, professional, and very kind. His PEMF technology is like nothing I have ever seen, or experienced. Not only is PEMF helping me recover from an arm injury, but it leaves me feeling super relaxed, in much less pain, and I sleep so well the night after treatment. 10/10 would recommend!"</p>
+                <div>
+                    <p class="font-semibold text-[#2C3338] text-[0.95rem] mb-1">Caitlin Tinney</p>
+                    <p class="text-[#7a9e7e] text-[0.8rem] uppercase tracking-wider font-semibold">Arm Injury Recovery</p>
+                </div>
+            </div>
+
+            <!-- Keni Harrison -->
+            <div class="reveal rounded-xl p-6 md:p-8 border flex flex-col" style="background:#EDE5D8; border-color: rgba(122,158,126,0.2);">
+                <div class="text-gold tracking-widest mb-4">★★★★★</div>
+                <p class="text-[#5a6e5c] text-[0.95rem] italic leading-relaxed flex-1 mb-6">"As an Olympic medalist, I am always looking for ways to take my recovery to the next level. Using PEMF has honestly been a huge help. I have seen faster recovery, better healing with injuries, and deeper sleep. And as an athlete, that quality sleep is everything. I wake up feeling more refreshed and ready to go."</p>
+                <div>
+                    <p class="font-semibold text-[#2C3338] text-[0.95rem] mb-1">Keni Harrison</p>
+                    <p class="text-[#7a9e7e] text-[0.8rem] uppercase tracking-wider font-semibold">Olympic Medalist · Recovery &amp; Sleep</p>
+                </div>
+            </div>
+
+            <!-- Gabriel A. -->
+            <div class="reveal rounded-xl p-6 md:p-8 border flex flex-col" style="background:#EDE5D8; border-color: rgba(122,158,126,0.2);">
+                <div class="text-gold tracking-widest mb-4">★★★★★</div>
+                <p class="text-[#5a6e5c] text-[0.95rem] italic leading-relaxed flex-1 mb-6">"After the session my shoulders felt so amazing. Sage is really knowledgeable and passionate about what he does. I will definitely be booking again."</p>
+                <div>
+                    <p class="font-semibold text-[#2C3338] text-[0.95rem] mb-1">Gabriel A.</p>
+                    <p class="text-[#7a9e7e] text-[0.8rem] uppercase tracking-wider font-semibold">Shoulder Tension</p>
+                </div>
+            </div>
+
+            <!-- Sherry S. -->
+            <div class="reveal rounded-xl p-6 md:p-8 border flex flex-col" style="background:#EDE5D8; border-color: rgba(122,158,126,0.2);">
+                <div class="text-gold tracking-widest mb-4">★★★★★</div>
+                <p class="text-[#5a6e5c] text-[0.95rem] italic leading-relaxed flex-1 mb-6">"Able to get up with no pain and slept very well. My 70 year old mother in law says she has never felt so good. She loves it and finds relief. 100% recommend it."</p>
+                <div>
+                    <p class="font-semibold text-[#2C3338] text-[0.95rem] mb-1">Sherry S.</p>
+                    <p class="text-[#7a9e7e] text-[0.8rem] uppercase tracking-wider font-semibold">Pain Relief &amp; Sleep</p>
+                </div>
+            </div>
+
+            <!-- John A. -->
+            <div class="reveal rounded-xl p-6 md:p-8 border flex flex-col" style="background:#EDE5D8; border-color: rgba(122,158,126,0.2);">
+                <div class="text-gold tracking-widest mb-4">★★★★★</div>
+                <p class="text-[#5a6e5c] text-[0.95rem] italic leading-relaxed flex-1 mb-6">"I went in for 3 sessions and my back now feels great. I come back for more because I feel like a completely different person. My body just feels reset."</p>
+                <div>
+                    <p class="font-semibold text-[#2C3338] text-[0.95rem] mb-1">John A.</p>
+                    <p class="text-[#7a9e7e] text-[0.8rem] uppercase tracking-wider font-semibold">Back Pain</p>
+                </div>
+            </div>
+
+            <!-- Steve M. -->
+            <div class="reveal rounded-xl p-6 md:p-8 border flex flex-col" style="background:#EDE5D8; border-color: rgba(122,158,126,0.2);">
+                <div class="text-gold tracking-widest mb-4">★★★★★</div>
+                <p class="text-[#5a6e5c] text-[0.95rem] italic leading-relaxed flex-1 mb-6">"Very relaxing, makes me fall asleep. Wake refreshed. Nothing better after hard work."</p>
+                <div>
+                    <p class="font-semibold text-[#2C3338] text-[0.95rem] mb-1">Steve M.</p>
+                    <p class="text-[#7a9e7e] text-[0.8rem] uppercase tracking-wider font-semibold">Sore Shoulders, Knees &amp; Back</p>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Google CTA -->
+        <div class="text-center mt-10 reveal">
+            <a href="https://share.google/0AnGXwo76QHGTyBA1" target="_blank" rel="noopener"
+               class="btn-outline inline-flex items-center gap-2 px-7 py-3 rounded text-[0.8rem] font-bold uppercase tracking-wider"
+               style="text-decoration:none;">
+                <svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor"><path d="M22.56 12.25c0-.78-.07-1.53-.2-2.25H12v4.26h5.92c-.26 1.37-1.04 2.53-2.21 3.31v2.77h3.57c2.08-1.92 3.28-4.74 3.28-8.09z" fill="#4285F4"/><path d="M12 23c2.97 0 5.46-.98 7.28-2.66l-3.57-2.77c-.98.66-2.23 1.06-3.71 1.06-2.86 0-5.29-1.93-6.16-4.53H2.18v2.84C3.99 20.53 7.7 23 12 23z" fill="#34A853"/><path d="M5.84 14.09c-.22-.66-.35-1.36-.35-2.09s.13-1.43.35-2.09V7.07H2.18C1.43 8.55 1 10.22 1 12s.43 3.45 1.18 4.93l2.85-2.22.81-.62z" fill="#FBBC05"/><path d="M12 5.38c1.62 0 3.06.56 4.21 1.64l3.15-3.15C17.45 2.09 14.97 1 12 1 7.7 1 3.99 3.47 2.18 7.07l3.66 2.84c.87-2.6 3.3-4.53 6.16-4.53z" fill="#EA4335"/></svg>
+                See All Google Reviews
+            </a>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== CTA ===================== -->
+<section class="py-12 md:py-20 text-center" style="background: #EDE5D8;">
+    <div class="max-w-[700px] mx-auto px-4 md:px-6 reveal">
+        <span class="inline-block px-4 py-1.5 rounded-full text-[0.75rem] md:text-[0.85rem] font-semibold mb-6 border pulse-badge" style="background: rgba(122,158,126,0.2); color:#7a9e7e; border-color: rgba(122,158,126,0.4);">Intro Offer: 3 Sessions for $150</span>
+        <h2 class="font-heading text-[1.6rem] md:text-[2.5rem] text-[#2C3338] mb-4">Ready to Write Your Own Story?</h2>
+        <p class="text-[#5a6e5c] text-[0.95rem] md:text-[1.1rem] mb-8">No commute, no waiting room. I bring everything to you. Most clients notice something after their very first session.</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <a href="https://calendly.com/mendmobilewellness/mend-first-time-pemf-session-60-mins-clone?back=1&month=2026-04" class="btn-gold inline-flex items-center justify-center w-full sm:w-auto px-8 py-3.5 rounded text-[0.8rem] font-bold uppercase tracking-wider" style="color:#ffffff; text-decoration:none;">Book a Session</a>
+            <a href="tel:7022774395" class="btn-outline inline-flex items-center justify-center w-full sm:w-auto px-8 py-3.5 rounded text-[0.8rem] font-bold uppercase tracking-wider" style="text-decoration:none;">Call / Text Us</a>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="py-16 pb-20 md:pb-16 text-center text-sm text-[#5a6e5c]" style="background: #EAE4DA;">
+    <div class="max-w-container mx-auto px-4 md:px-6">
+        <div class="flex items-center justify-center mb-8">
+            <img src="MEND_LOGO_TRANSPARENT.png" alt="Mend Mobile Wellness &amp; Recovery" class="h-24 md:h-28 w-auto">
+        </div>
+        <div class="flex flex-wrap justify-center gap-4 md:gap-8 mb-8">
+            <a href="index.html#home"    class="text-[#2C3338] hover:text-gold transition-colors text-[0.85rem] md:text-[0.95rem] font-medium" style="text-decoration:none;">Home</a>
+            <a href="conditions.html"   class="text-[#2C3338] hover:text-gold transition-colors text-[0.85rem] md:text-[0.95rem] font-medium" style="text-decoration:none;">Conditions</a>
+            <a href="index.html#process" class="text-[#2C3338] hover:text-gold transition-colors text-[0.85rem] md:text-[0.95rem] font-medium" style="text-decoration:none;">How It Works</a>
+            <a href="testimonials.html"  class="text-gold text-[0.85rem] md:text-[0.95rem] font-medium" style="text-decoration:none;">Testimonials</a>
+            <a href="pricing.html"       class="text-[#2C3338] hover:text-gold transition-colors text-[0.85rem] md:text-[0.95rem] font-medium" style="text-decoration:none;">Pricing</a>
+            <a href="about.html"         class="text-[#2C3338] hover:text-gold transition-colors text-[0.85rem] md:text-[0.95rem] font-medium" style="text-decoration:none;">About</a>
+            <a href="tel:7022774395"     class="text-[#2C3338] hover:text-gold transition-colors text-[0.85rem] md:text-[0.95rem] font-medium" style="text-decoration:none;">Contact</a>
+        </div>
+        <div class="flex justify-center gap-4 mb-8">
+            <a href="#" class="w-10 h-10 rounded-full border border-black/20 flex items-center justify-center text-[#5a6e5c] hover:text-gold hover:border-gold transition-all">
+                <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full border border-black/20 flex items-center justify-center text-[#5a6e5c] hover:text-gold hover:border-gold transition-all">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                    <circle cx="12" cy="12" r="4"/>
+                    <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/>
+                </svg>
+            </a>
+        </div>
+        <div class="flex justify-center gap-6 mb-4 flex-wrap text-xs">
+            <a href="#" class="text-[#5a6e5c] hover:text-gold transition-colors" style="text-decoration:none;">Terms &amp; Conditions</a>
+            <span class="text-black/20">|</span>
+            <a href="#" class="text-[#5a6e5c] hover:text-gold transition-colors" style="text-decoration:none;">Privacy Policy</a>
+        </div>
+        <p class="text-xs text-[#5a6e5c] mb-0">© 2026 Mend Mobile Wellness &amp; Recovery. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<!-- ===================== SCRIPTS ===================== -->
+<script>
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+        header.classList.toggle('header-scrolled', window.scrollY > 20);
+    });
+
+    const toggle = document.getElementById('mobileToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    toggle.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+    mobileMenu.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    });
+
+    const revealObs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                revealObs.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+    const canvas = document.getElementById('heroCanvas');
+    const ctx = canvas.getContext('2d');
+    function resizeCanvas() {
+        canvas.width = canvas.parentElement.offsetWidth;
+        canvas.height = canvas.parentElement.offsetHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+    const particles = Array.from({ length: 60 }, () => ({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 1.5 + 0.5,
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: (Math.random() - 0.5) * 0.4,
+        o: Math.random() * 0.4 + 0.1
+    }));
+    function drawCanvas() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => {
+            p.x += p.vx; p.y += p.vy;
+            if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+            if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(122,158,126,${p.o})`;
+            ctx.fill();
+        });
+        requestAnimationFrame(drawCanvas);
+    }
+    drawCanvas();
+</script>
+
+<!-- ===================== MOBILE STICKY BOOK BUTTON ===================== -->
+<div class="md:hidden fixed bottom-0 left-0 right-0 z-50 px-4 py-3" style="background: rgba(245,240,232,0.97); backdrop-filter: blur(12px); border-top: 1px solid rgba(122,158,126,0.2);">
+    <a href="https://calendly.com/mendmobilewellness/mend-first-time-pemf-session-60-mins-clone?back=1&month=2026-04" class="btn-gold w-full flex items-center justify-center py-3.5 rounded text-[0.8rem] font-bold uppercase tracking-wider" style="color:#ffffff; text-decoration:none;">Book a Session</a>
+</div>
+</body>
+</html>

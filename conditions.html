@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Conditions PEMF May Support | Mend Mobile Wellness &amp; Recovery</title>
+    <meta name="description" content="Explore conditions PEMF therapy may help with — joint pain, neuropathy, athletic recovery, sleep, stress, and more. Mobile sessions in West LA with the Pulse XL Pro.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'navy-dark': '#F5F0E8',
+                        'navy-card': '#EDE5D8',
+                        'navy-light': '#E4DAC8',
+                        'gold': '#7a9e7e',
+                        'gold-light': '#9ab89e',
+                        'blue-accent': '#7a9e7e',
+                        'text-muted': '#5a6e5c',
+                    },
+                    fontFamily: {
+                        heading: ['"Inter"', 'serif'],
+                        body: ['"DM Sans"', 'sans-serif'],
+                    },
+                    maxWidth: {
+                        container: '1200px',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --c-gold: #7a9e7e;
+            --c-gold-glow: rgba(122,158,126,0.4);
+            --c-navy-dark: #F5F0E8;
+            --c-navy-card: #EDE5D8;
+            --trans: all 0.4s cubic-bezier(0.25,1,0.5,1);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: #F5F0E8;
+            font-family: 'DM Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        .grad-gold { background: linear-gradient(135deg, #7a9e7e 0%, #9ab89e 100%); }
+
+        .btn-gold {
+            background: linear-gradient(135deg, #7a9e7e 0%, #9ab89e 100%);
+            box-shadow: 0 4px 20px rgba(122,158,126,0.4);
+            transition: var(--trans);
+        }
+        .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(122,158,126,0.5); }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid #7a9e7e;
+            transition: var(--trans);
+            color: #2C3338;
+        }
+        .btn-outline:hover { border-color: #7a9e7e; color: #7a9e7e; }
+
+        .nav-link { position: relative; }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px; left: 0;
+            width: 0; height: 2px;
+            background: var(--c-gold);
+            transition: var(--trans);
+        }
+        .nav-link:hover::after { width: 100%; }
+        .nav-link.active::after { width: 100%; }
+
+        .header-scrolled {
+            background: rgba(245,240,232,0.98) !important;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        .mobile-menu {
+            transform: translateY(-150%);
+            transition: var(--trans);
+        }
+        .mobile-menu.open { transform: translateY(0); }
+
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease-out;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .condition-card {
+            transition: var(--trans);
+        }
+        .condition-card:hover {
+            transform: translateY(-6px);
+            border-color: rgba(122,158,126,0.5) !important;
+            box-shadow: 0 12px 40px rgba(0,0,0,0.1);
+        }
+
+        #heroCanvas {
+            position: absolute;
+            top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 1;
+        }
+
+        @keyframes pulse-ring {
+            0% { box-shadow: 0 0 0 0 rgba(122,158,126,0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(122,158,126,0); }
+            100% { box-shadow: 0 0 0 0 rgba(122,158,126,0); }
+        }
+        .pulse-badge { animation: pulse-ring 2s infinite; }
+
+        section { border-bottom: 1px solid rgba(0,0,0,0.06); }
+    </style>
+</head>
+<body class="text-[#2C3338]">
+
+<!-- ===================== HEADER ===================== -->
+<header id="header" class="fixed top-0 w-full z-50 h-20 border-b border-black/5 transition-all duration-300" style="background: rgba(245,240,232,0.95); backdrop-filter: blur(12px);">
+    <div class="max-w-container mx-auto px-6 h-full flex items-center justify-between">
+        <a href="index.html" style="text-decoration: none;">
+            <img src="MEND_LOGO_TRANSPARENT.png" alt="Mend Mobile Wellness &amp; Recovery" class="h-24 md:h-28 w-auto">
+        </a>
+        <nav class="hidden md:flex items-center gap-8">
+            <a href="index.html#home"       class="nav-link text-[#2C3338] hover:text-gold text-[0.95rem] font-medium transition-colors" style="text-decoration:none;">Home</a>
+            <a href="conditions.html"       class="nav-link active text-gold text-[0.95rem] font-medium" style="text-decoration:none;">Conditions</a>
+            <a href="index.html#process"    class="nav-link text-[#2C3338] hover:text-gold text-[0.95rem] font-medium transition-colors" style="text-decoration:none;">How It Works</a>
+            <a href="testimonials.html"    class="nav-link text-[#2C3338] hover:text-gold text-[0.95rem] font-medium transition-colors" style="text-decoration:none;">Testimonials</a>
+            <a href="index.html#faq"        class="nav-link text-[#2C3338] hover:text-gold text-[0.95rem] font-medium transition-colors" style="text-decoration:none;">FAQ</a>
+            <a href="pricing.html"          class="nav-link text-[#2C3338] hover:text-gold text-[0.95rem] font-medium transition-colors" style="text-decoration:none;">Pricing</a>
+            <a href="about.html"            class="nav-link text-[#2C3338] hover:text-gold text-[0.95rem] font-medium transition-colors" style="text-decoration:none;">About</a>
+            <a href="https://calendly.com/mendmobilewellness/mend-first-time-pemf-session-60-mins-clone?back=1&month=2026-04" class="btn-gold px-6 py-2.5 rounded text-[0.8rem] font-bold uppercase tracking-wider" style="text-decoration:none; color:#ffffff;">Book Now</a>
+        </nav>
+        <button id="mobileToggle" class="md:hidden text-gold w-11 h-11 flex items-center justify-center" aria-label="Toggle menu">
+            <svg width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round"/>
+            </svg>
+        </button>
+    </div>
+</header>
+
+<!-- Mobile Menu -->
+<div id="mobileMenu" class="mobile-menu fixed w-full z-40 flex flex-col gap-4 p-6 border-b border-black/5" style="top:80px; background: rgba(245,240,232,0.97); backdrop-filter: blur(12px);">
+    <a href="index.html#home"       class="text-[#2C3338] font-medium py-3 border-b border-black/10 hover:text-gold transition-colors" style="text-decoration:none;">Home</a>
+    <a href="conditions.html"       class="text-gold font-medium py-3 border-b border-black/10" style="text-decoration:none;">Conditions</a>
+    <a href="index.html#process"    class="text-[#2C3338] font-medium py-3 border-b border-black/10 hover:text-gold transition-colors" style="text-decoration:none;">How It Works</a>
+    <a href="testimonials.html"    class="text-[#2C3338] font-medium py-3 border-b border-black/10 hover:text-gold transition-colors" style="text-decoration:none;">Testimonials</a>
+    <a href="index.html#faq"        class="text-[#2C3338] font-medium py-3 border-b border-black/10 hover:text-gold transition-colors" style="text-decoration:none;">FAQ</a>
+    <a href="pricing.html"          class="text-[#2C3338] font-medium py-3 border-b border-black/10 hover:text-gold transition-colors" style="text-decoration:none;">Pricing</a>
+    <a href="about.html"            class="text-[#2C3338] font-medium py-3 border-b border-black/10 hover:text-gold transition-colors" style="text-decoration:none;">About</a>
+    <a href="https://calendly.com/mendmobilewellness/mend-first-time-pemf-session-60-mins-clone?back=1&month=2026-04" class="btn-gold text-center py-3 rounded text-[0.8rem] font-bold uppercase tracking-wider mt-1" style="text-decoration:none; color:#ffffff;">Book Consultation</a>
+</div>
+
+<!-- ===================== HERO ===================== -->
+<section class="relative flex items-center overflow-hidden pt-20" style="min-height:35vh; background: linear-gradient(135deg, #F5F0E8 0%, #EDE5D8 100%); border-bottom: none;">
+    <canvas id="heroCanvas"></canvas>
+    <div class="max-w-container mx-auto px-4 md:px-6 py-10 md:py-16 text-center relative z-10 w-full">
+        <span class="block text-gold text-[0.75rem] md:text-[0.9rem] font-bold uppercase tracking-[2px] mb-4">What We Work With</span>
+        <h1 class="font-heading text-[1.8rem] md:text-[3rem] leading-[1.2] mb-4 md:mb-6 text-[#2C3338]">Conditions PEMF May Support</h1>
+        <p class="text-[#5a6e5c] text-[1rem] md:text-[1.2rem] max-w-2xl mx-auto">PEMF works at the cellular level. These are the situations we see most often. If yours isn't listed, reach out anyway.</p>
+    </div>
+</section>
+
+<!-- ===================== GROUP 1: MOST COMMON ===================== -->
+<section class="py-10 md:py-[70px]">
+    <div class="max-w-container mx-auto px-4 md:px-6">
+        <div class="text-center max-w-[800px] mx-auto mb-8 md:mb-12 reveal">
+            <h2 class="font-heading text-[1.6rem] md:text-[2.5rem] text-[#2C3338] mb-3">Most Common</h2>
+            <p class="text-[#5a6e5c] text-[0.95rem] md:text-[1.1rem]">These are the things people come to us for most often.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-8">
+
+            <!-- Joint Pain -->
+            <div class="condition-card flex flex-col rounded-xl p-5 md:p-8 border reveal" style="background:#EDE5D8; border-color:rgba(122,158,126,0.2);">
+                <div class="w-12 h-12 rounded-full flex items-center justify-center mb-5 p-[10px]" style="background:rgba(122,158,126,0.15);">
+                    <!-- Joint / bone icon -->
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#7a9e7e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full"><circle cx="5" cy="5" r="2"/><circle cx="19" cy="19" r="2"/><path d="M7 7l10 10"/><path d="M5.5 7A3.5 3.5 0 0 1 7 5.5"/><path d="M18.5 17a3.5 3.5 0 0 1-1.5 1.5"/></svg>
+                </div>
+                <h3 class="font-heading text-xl text-[#2C3338] mb-2">Joint Pain &amp; Stiffness</h3>
+                <p class="text-[#5a6e5c] text-[0.95rem] mb-6">Discomfort in knees, hips, hands, and other joints that limits everyday movement. PEMF may help support joint comfort and mobility.</p>
+                <div class="mt-auto pt-5 border-t border-dashed" style="border-color:rgba(122,158,126,0.4);">
+                    <p class="italic text-[#5a6e5c] text-[0.9rem] mb-1">"I went in for 3 sessions and my back now feels great."</p>
+                    <span class="text-gold text-[0.8rem] font-semibold block mb-4">Verified Client</span>
+                    <p class="text-[#5a6e5c] text-[0.75rem] font-semibold uppercase tracking-wider mb-2">Research</p>
+                    <ul class="space-y-1.5">
+                        <li><a href="https://pubmed.ncbi.nlm.nih.gov/32251502/" target="_blank" rel="noopener" class="text-gold text-[0.8rem] hover:underline flex items-start gap-1" style="text-decoration:none;"><svg class="w-3 h-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>Systematic review &amp; meta analysis: PEMF on OA pain &amp; function (2020)</a></li>
+                        <li><a href="https://pubmed.ncbi.nlm.nih.gov/39928254/" target="_blank" rel="noopener" class="text-gold text-[0.8rem] hover:underline flex items-start gap-1" style="text-decoration:none;"><svg class="w-3 h-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>Multi center RCT: PEMF for joint &amp; soft tissue pain (2025)</a></li>
+                        <li><a href="https://pubmed.ncbi.nlm.nih.gov/26562074/" target="_blank" rel="noopener" class="text-gold text-[0.8rem] hover:underline flex items-start gap-1" style="text-decoration:none;"><svg class="w-3 h-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>Double blind placebo controlled: PEMF in osteoarthritis (2016)</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Back Neck Shoulder -->
+            <div class="condition-card flex flex-col rounded-xl p-5 md:p-8 border reveal" style="background:#EDE5D8; border-color:rgba(122,158,126,0.2);">
+                <div class="w-12 h-12 rounded-full flex items-center justify-center mb-5 p-[10px]" style="background:rgba(122,158,126,0.15);">
+                    <!-- Spine / back icon -->
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#7a9e7e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full"><path d="M12 3v18"/><path d="M8 6h8"/><path d="M9 10h6"/><path d="M9 14h6"/><path d="M8 18h8"/></svg>
+                </div>
+                <h3 class="font-heading text-xl text-[#2C3338] mb-2">Back, Neck &amp; Shoulder Discomfort</h3>
+                <p class="text-[#5a6e5c] text-[0.95rem] mb-6">Tension and discomfort in the upper body that affects daily activities. PEMF may help support relaxation and comfort in these areas.</p>
+                <div class="mt-auto pt-5 border-t border-dashed" style="border-color:rgba(122,158,126,0.4);">
+                    <p class="italic text-[#5a6e5c] text-[0.9rem] mb-1">"I love this in home service so much, and Sage is an absolute gem!"</p>
+                    <span class="text-gold text-[0.8rem] font-semibold block mb-4">Caitlin Tinney</span>
+                    <p class="text-[#5a6e5c] text-[0.75rem] font-semibold uppercase tracking-wider mb-2">Research</p>
+                    <ul class="space-y-1.5">
+                        <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12088032/" target="_blank" rel="noopener" class="text-gold text-[0.8rem] hover:underline flex items-start gap-1" style="text-decoration:none;"><svg class="w-3 h-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>Meta analysis: PEMF for shoulder impingement syndrome (2025)</a></li>
+                        <li><a href="https://pubmed.ncbi.nlm.nih.gov/35077249/" target="_blank" rel="noopener" class="text-gold text-[0.8rem] hover:underline flex items-start gap-1" style="text-decoration:none;"><svg class="w-3 h-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>Systematic review &amp; meta analysis: PEMF for low back pain (2022)</a></li>
+                        <li><a href="https://pubmed.ncbi.nlm.nih.gov/24139986/" target="_blank" rel="noopener" class="text-gold text-[0.8rem] hover:underline flex items-start gap-1" style="text-decoration:none;"><svg class="w-3 h-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>Double blind RCT: PEMF for shoulder impingement (2013)</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Muscle Tension -->
+            <div class="condition-card flex flex-col rounded-xl p-5 md:p-8 border reveal" style="background:#EDE5D8; border-color:rgba(122,158,126,0.2);">
+                <div class="w-12 h-12 rounded-full flex items-center justify-center mb-5 p-[10px]" style="background:rgba(122,158,126,0.15);">
+                    <!-- Muscle / flex icon -->
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#7a9e7e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full"><path d="M6.5 6.5a5 5 0 0 1 7 0l2 2a5 5 0 0 1 0 7l-1 1"/><path d="M17.5 17.5a5 5 0 0 1-7 0l-2-2a5 5 0 0 1 0-7l1-1"/></svg>
+                </div>
+                <h3 class="font-heading text-xl text-[#2C3338] mb-2">Muscle Tension &amp; Soreness</h3>
+                <p class="text-[#5a6e5c] text-[0.95rem] mb-6">Tight, guarded muscles that limit range of motion and comfort. PEMF may help support muscle relaxation and reduce post activity soreness.</p>
+                <div class="mt-auto pt-5 border-t border-dashed" style="border-color:rgba(122,158,126,0.4);">
+                    <p class="italic text-[#5a6e5c] text-[0.9rem] mb-1">"I've seen faster recovery, better healing with injuries, and deeper sleep."</p>
+                    <span class="text-gold text-[0.8rem] font-semibold block mb-4">Keni Harrison, Olympic Medalist</span>
+                    <p class="text-[#5a6e5c] text-[0.75rem] font-semibold uppercase tracking-wider mb-2">Research</p>
+                    <ul class="space-y-1.5">
+                        <li><a href="https://pubmed.ncbi.nlm.nih.gov/24906295/" target="_blank" rel="noopener" class="text-gold text-[0.8rem] hover:underline flex items-start gap-1" style="text-decoration:none;"><svg class="w-3 h-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>PEMF on delayed onset muscle soreness (DOMS) (2014)</a></li>
+                        <li><a href="https://pubmed.ncbi.nlm.nih.gov/39315588/" target="_blank" rel="noopener" class="text-gold text-[0.8rem] hover:underline flex items-start gap-1" style="text-decoration:none;"><svg class="w-3 h-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>PEMF attenuates nerve damage after eccentric exercise (2024)</a></li>
+                        <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10706358/" target="_blank" rel="noopener" class="text-gold text-[0.8rem] hover:underline flex items-start gap-1" style="text-decoration:none;"><svg class="w-3 h-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>PEMF induces skeletal muscle cell repair &amp; regeneration (2023)</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===================== GROUP 2: NERVE & CHRONIC ===================== -->
+<section class="py-10 md:py-[70px]" style="background: rgba(237,229,216,0.4);">
+    <div class="max-w-container mx-auto px-4 md:px-6">
+        <div class="text-center max-w-[800px] mx-auto mb-8 md:mb-12 reveal">
+            <h2 class="font-heading text-[1.6rem] md:text-[2.5rem] text-[#2C3338] mb-3">Nerve &amp; Chronic</h2>
+            <p class="text-[#5a6e5c] text-[0.95rem] md:text-[1.1rem]">Longer term concerns that many people come to us for.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-8">
+
+            <!-- Neuropathy -->
+            <div class="condition-card flex flex-col rounded-xl p-5 md:p-8 border reveal" style="background:#EDE5D8; border-color:rgba(122,158,126,0.2);">
+                <div class="w-12 h-12 rounded-full flex items-center justify-center mb-5 p-[10px]" style="background:rgba(122,158,126,0.15);">
+                    <!-- Nerve / zap icon -->
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#7a9e7e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+                </div>
+                <h3 class="font-heading text-xl text-[#2C3338] mb-2">Neuropathy</h3>
+                <p class="text-[#5a6e5c] text-[0.95rem] mb-6">Numbness, tingling, and burning sensations in hands or feet. PEMF may help support nerve comfort and circulation to affected areas.</p>
+                <div class="mt-auto pt-5 border-t border-dashed" style="border-color:rgba(122,158,126,0.4);">
+                    <p class="italic text-[#5a6e5c] text-[0.9rem] mb-1">"It leaves me feeling super relaxed, in much less pain."</p>
+                    <span class="text-gold text-[0.8rem] font-semibold block mb-4">Caitlin Tinney</span>
+                    <p class="text-[#5a6e5c] text-[0.75rem] font-semibold uppercase tracking-wider mb-2">Research</p>
+                    <ul class="space-y-1.5">
+                        <li><a href="https://pubmed.ncbi.nlm.nih.gov/19577022/" target="_blank" rel="noopener" class="text-gold text-[0.8rem] hover:underline flex items-start gap-1" style="text-decoration:none;"><svg class="w-3 h-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>RCT: PEMF reduces diabetic neuropathic pain (2009)</a></li>
+                        <li><a href="https://pubmed.ncbi.nlm.nih.gov/37542366/" target="_blank" rel="noopener" class="text-gold text-[0.8rem] hover:underline flex items-start gap-1" style="text-decoration:none;"><svg class="w-3 h-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>Double blind RCT: PEMF on diabetic peripheral neuropathy (2023)</a></li>
+                        <li><a href="https://pubmed.ncbi.nlm.nih.gov/15035963/" target="_blank" rel="noopener" class="text-gold text-[0.8rem] hover:underline flex items-start gap-1" style="text-decoration:none;"><svg class="w-3 h-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>Pilot: PEMF in refractory neuropathic pain, 50%+ relief (2004)</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Sciatica -->
+            <div class="condition-card flex flex-col rounded-xl p-5 md:p-8 border reveal" style="background:#EDE5D8; border-color:rgba(122,158,126,0.2);">
+                <div class="w-12 h-12 rounded-full flex items-center justify-center mb-5 p-[10px]" style="background:rgba(122,158,126,0.15);">
+                    <!-- Sciatica / leg nerve radiating icon -->
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#7a9e7e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full"><path d="M12 3c0 0-2 3-2 6s2 5 2 8"/><path d="M12 17c0 0 2 1.5 3 3"/><path d="M10 9c0 0-3 1-4 3"/><path d="M11 13c0 0-2 1-2 3"/></svg>
+                </div>
+                <h3 class="font-heading text-xl text-[#2C3338] mb-2">Sciatica</h3>
+                <p class="text-[#5a6e5c] text-[0.95rem] mb-6">Discomfort radiating from the lower back down through the leg. PEMF may help support comfort and reduce irritation along the nerve pathway.</p>
+                <div class="mt-auto pt-5 border-t border-dashed" style="border-color:rgba(122,158,126,0.4);">
+                    <p class="italic text-[#5a6e5c] text-[0.9rem] mb-1">"My body just feels... reset."</p>
+                    <span class="text-gold text-[0.8rem] font-semibold block mb-4">New Client, West LA</span>
+                    <p class="text-[#5a6e5c] text-[0.75rem] font-semibold uppercase tracking-wider mb-2">Research</p>
+                    <ul class="space-y-1.5">
+                        <li><a href="https://pubmed.ncbi.nlm.nih.gov/23083041/" target="_blank" rel="noopener" class="text-gold text-[0.8rem] hover:underline flex items-start gap-1" style="text-decoration:none;"><svg class="w-3 h-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>RCT: PEMF for discogenic lumbar radiculopathy (2012)</a></li>
+                        <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9646515/" target="_blank" rel="noopener" class="text-gold text-[0.8rem] hover:underline flex items-start gap-1" style="text-decoration:none;"><svg class="w-3 h-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>PEMF vs. TENS for sciatic nerve pain, 72% VAS reduction (2022)</a></li>
+                        <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC12943413/" target="_blank" rel="noopener" class="text-gold text-[0.8rem] hover:underline flex items-start gap-1" style="text-decoration:none;"><svg class="w-3 h-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>Systematic review &amp; meta analysis: PEMF on neuropathic pain (2025)</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Fibromyalgia -->
+            <div class="condition-card flex flex-col rounded-xl p-5 md:p-8 border reveal" style="background:#EDE5D8; border-color:rgba(122,158,126,0.2);">
+                <div class="w-12 h-12 rounded-full flex items-center justify-center mb-5 p-[10px]" style="background:rgba(122,158,126,0.15);">
+                    <!-- Fibromyalgia / whole body pain points icon -->
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#7a9e7e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full"><circle cx="12" cy="4" r="1.5"/><path d="M12 6v5"/><path d="M9 9l3 2 3-2"/><path d="M10 11l-2 5"/><path d="M14 11l2 5"/><circle cx="8" cy="8" r="0.8" fill="#7a9e7e"/><circle cx="16" cy="8" r="0.8" fill="#7a9e7e"/><circle cx="9" cy="15" r="0.8" fill="#7a9e7e"/><circle cx="15" cy="15" r="0.8" fill="#7a9e7e"/></svg>
+                </div>
+                <h3 class="font-heading text-xl text-[#2C3338] mb-2">Fibromyalgia</h3>
+                <p class="text-[#5a6e5c] text-[0.95rem] mb-6">Widespread musculoskeletal discomfort and fatigue. PEMF may help support nervous system balance and reduce the burden of chronic symptoms.</p>
+                <div class="mt-auto pt-5 border-t border-dashed" style="border-color:rgba(122,158,126,0.4);">
+                    <p class="italic text-[#5a6e5c] text-[0.9rem] mb-1">"PEMF technology is like nothing I've ever seen, or experienced."</p>
+                    <span class="text-gold text-[0.8rem] font-semibold block mb-4">Caitlin Tinney</span>
+                    <p class="text-[#5a6e5c] text-[0.75rem] font-semibold uppercase tracking-wider mb-2">Research</p>
+                    <ul class="space-y-1.5">
+                        <li><a href="https://pubmed.ncbi.nlm.nih.gov/29709070/" target="_blank" rel="noopener" class="text-gold text-[0.8rem] hover:underline flex items-start gap-1" style="text-decoration:none;"><svg class="w-3 h-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>RCT: PEMF on fibromyalgia pain &amp; quality of life (2018)</a></li>
+                        <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC9524818/" target="_blank" rel="noopener" class="text-gold text-[0.8rem] hover:underline flex items-start gap-1" style="text-decoration:none;"><svg class="w-3 h-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>Pilot RCT: Low energy PEMF reduces fibromyalgia pain (2022)</a></li>
+                        <li><a href="https://pubmed.ncbi.nlm.nih.gov/19920724/" target="_blank" rel="noopener" class="text-gold text-[0.8rem] hover:underline flex items-start gap-1" style="text-decoration:none;"><svg class="w-3 h-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>Double blind sham controlled: PEMF in fibromyalgia (2009)</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===================== GROUP 3: ACTIVE & ONGOING ===================== -->
+<section class="py-10 md:py-[70px]">
+    <div class="max-w-container mx-auto px-4 md:px-6">
+        <div class="text-center max-w-[800px] mx-auto mb-8 md:mb-12 reveal">
+            <h2 class="font-heading text-[1.6rem] md:text-[2.5rem] text-[#2C3338] mb-3">Active &amp; Ongoing Support</h2>
+            <p class="text-[#5a6e5c] text-[0.95rem] md:text-[1.1rem]">Many people use PEMF as part of their regular wellness routine.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-8">
+
+            <!-- Athletic Recovery -->
+            <div class="condition-card flex flex-col rounded-xl p-5 md:p-8 border reveal" style="background:#EDE5D8; border-color:rgba(122,158,126,0.2);">
+                <div class="w-12 h-12 rounded-full flex items-center justify-center mb-5 p-[10px]" style="background:rgba(122,158,126,0.15);">
+                    <!-- Athletic / running icon -->
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#7a9e7e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full"><circle cx="14" cy="4" r="1.5"/><path d="M10 8l2-2 3 1 2 3-3 1"/><path d="M12 10l-2 4 2 3"/><path d="M10 14l-3 4"/><path d="M14 14l2 4"/></svg>
+                </div>
+                <h3 class="font-heading text-xl text-[#2C3338] mb-2">Athletic Performance &amp; Recovery</h3>
+                <p class="text-[#5a6e5c] text-[0.95rem] mb-6">Supporting the body before and after intense training or competition. PEMF may help support performance, reduce downtime, and speed natural recovery.</p>
+                <div class="mt-auto pt-5 border-t border-dashed" style="border-color:rgba(122,158,126,0.4);">
+                    <p class="italic text-[#5a6e5c] text-[0.9rem] mb-1">"I've seen faster recovery, better healing with injuries, and deeper sleep. I wake up feeling more refreshed and ready to go."</p>
+                    <span class="text-gold text-[0.8rem] font-semibold block mb-4">Keni Harrison, Olympic Medalist</span>
+                    <p class="text-[#5a6e5c] text-[0.75rem] font-semibold uppercase tracking-wider mb-2">Research</p>
+                    <ul class="space-y-1.5">
+                        <li><a href="https://pubmed.ncbi.nlm.nih.gov/39355761/" target="_blank" rel="noopener" class="text-gold text-[0.8rem] hover:underline flex items-start gap-1" style="text-decoration:none;"><svg class="w-3 h-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>Review: PEMF as adjunct to exercise &amp; recovery (2024)</a></li>
+                        <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10048902/" target="_blank" rel="noopener" class="text-gold text-[0.8rem] hover:underline flex items-start gap-1" style="text-decoration:none;"><svg class="w-3 h-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>Controlled pilot: PEMF boosts muscle activation during cycling (2023)</a></li>
+                        <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10706358/" target="_blank" rel="noopener" class="text-gold text-[0.8rem] hover:underline flex items-start gap-1" style="text-decoration:none;"><svg class="w-3 h-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>PEMF promotes skeletal muscle cell repair &amp; oxidative response (2023)</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Stress & Nervous System -->
+            <div class="condition-card flex flex-col rounded-xl p-5 md:p-8 border reveal" style="background:#EDE5D8; border-color:rgba(122,158,126,0.2);">
+                <div class="w-12 h-12 rounded-full flex items-center justify-center mb-5 p-[10px]" style="background:rgba(122,158,126,0.15);">
+                    <!-- Brain / nervous system wave icon -->
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#7a9e7e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full"><path d="M9 4a4 4 0 0 1 6 0c2 1 3 3 2 5-.5 1.5-2 2-2 4"/><path d="M15 13c0 2-1.5 3.5-1.5 5.5"/><path d="M9 13c0 2 1.5 3.5 1.5 5.5"/><path d="M7 9c-1.5.5-3 2-2 4 .5 1 1.5 1.5 2 2"/><path d="M3 14h3"/><path d="M18 14h3"/></svg>
+                </div>
+                <h3 class="font-heading text-xl text-[#2C3338] mb-2">Stress &amp; Nervous System Regulation</h3>
+                <p class="text-[#5a6e5c] text-[0.95rem] mb-6">Supporting the body's ability to manage everyday stress and tension. PEMF may help promote a calm, balanced nervous system response.</p>
+                <div class="mt-auto pt-5 border-t border-dashed" style="border-color:rgba(122,158,126,0.4);">
+                    <p class="italic text-[#5a6e5c] text-[0.9rem] mb-1">"I feel like a completely different person. My body just feels... reset."</p>
+                    <span class="text-gold text-[0.8rem] font-semibold block mb-4">New Client, West LA</span>
+                    <p class="text-[#5a6e5c] text-[0.75rem] font-semibold uppercase tracking-wider mb-2">Research</p>
+                    <ul class="space-y-1.5">
+                        <li><a href="https://pubmed.ncbi.nlm.nih.gov/39972609/" target="_blank" rel="noopener" class="text-gold text-[0.8rem] hover:underline flex items-start gap-1" style="text-decoration:none;"><svg class="w-3 h-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>RCT: PEMF vagus nerve stimulation improves sleep &amp; anxiety (2025)</a></li>
+                        <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC7018371/" target="_blank" rel="noopener" class="text-gold text-[0.8rem] hover:underline flex items-start gap-1" style="text-decoration:none;"><svg class="w-3 h-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>RCT: PEMF reduces anxiety, depression &amp; disability (2020)</a></li>
+                        <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC2670735/" target="_blank" rel="noopener" class="text-gold text-[0.8rem] hover:underline flex items-start gap-1" style="text-decoration:none;"><svg class="w-3 h-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>Double blind RCT: Low frequency PEMF for chronic musculoskeletal pain (2009)</a></li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Sleep -->
+            <div class="condition-card flex flex-col rounded-xl p-5 md:p-8 border reveal" style="background:#EDE5D8; border-color:rgba(122,158,126,0.2);">
+                <div class="w-12 h-12 rounded-full flex items-center justify-center mb-5 p-[10px]" style="background:rgba(122,158,126,0.15);">
+                    <!-- Sleep / moon icon -->
+                    <svg viewBox="0 0 24 24" fill="none" stroke="#7a9e7e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+                </div>
+                <h3 class="font-heading text-xl text-[#2C3338] mb-2">Sleep Support</h3>
+                <p class="text-[#5a6e5c] text-[0.95rem] mb-6">Supporting the body's natural ability to rest and recover overnight. PEMF may help promote deeper, more restorative sleep.</p>
+                <div class="mt-auto pt-5 border-t border-dashed" style="border-color:rgba(122,158,126,0.4);">
+                    <p class="italic text-[#5a6e5c] text-[0.9rem] mb-1">"I sleep so well the night after treatment."</p>
+                    <span class="text-gold text-[0.8rem] font-semibold block mb-4">Caitlin Tinney</span>
+                    <p class="text-[#5a6e5c] text-[0.75rem] font-semibold uppercase tracking-wider mb-2">Research</p>
+                    <ul class="space-y-1.5">
+                        <li><a href="https://pubmed.ncbi.nlm.nih.gov/11697020/" target="_blank" rel="noopener" class="text-gold text-[0.8rem] hover:underline flex items-start gap-1" style="text-decoration:none;"><svg class="w-3 h-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>Double blind placebo controlled: PEMF for insomnia, 70% substantial relief (2001)</a></li>
+                        <li><a href="https://pmc.ncbi.nlm.nih.gov/articles/PMC10307909/" target="_blank" rel="noopener" class="text-gold text-[0.8rem] hover:underline flex items-start gap-1" style="text-decoration:none;"><svg class="w-3 h-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>Multi center RCT: Pulsed magnetic therapy for insomnia disorder (2023)</a></li>
+                        <li><a href="https://pubmed.ncbi.nlm.nih.gov/39972609/" target="_blank" rel="noopener" class="text-gold text-[0.8rem] hover:underline flex items-start gap-1" style="text-decoration:none;"><svg class="w-3 h-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M18 13v6a2 2 0 01-2 2H5a2 2 0 01-2-2V8a2 2 0 012-2h6M15 3h6v6M10 14L21 3"/></svg>RCT: PEMF at 16hz significantly improves sleep quality (2025)</a></li>
+                    </ul>
+                </div>
+            </div>
+
+        </div>
+    </div>
+</section>
+
+<!-- ===================== DON'T SEE YOUR SITUATION ===================== -->
+<section class="py-10 md:py-[70px]" style="background: rgba(237,229,216,0.4);">
+    <div class="max-w-container mx-auto px-4 md:px-6">
+        <div class="max-w-[800px] mx-auto p-6 md:p-12 rounded-xl text-center reveal" style="background: rgba(245,240,232,0.9); border: 1px solid rgba(122,158,126,0.3);">
+            <h2 class="font-heading text-[1.4rem] md:text-[2rem] text-[#2C3338] mb-4">Don't See Your Situation?</h2>
+            <p class="text-[#5a6e5c] text-[1rem] md:text-[1.15rem] mb-8">If you don't see what you're dealing with listed, that doesn't mean PEMF won't help. Reach out and we'll talk about it. No pressure, just a conversation.</p>
+            <a href="tel:7022774395" class="btn-gold inline-flex items-center justify-center w-full sm:w-auto px-8 py-3.5 rounded text-[0.8rem] font-bold uppercase tracking-wider" style="color:#ffffff; text-decoration:none;">Call / Text Us</a>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== CTA ===================== -->
+<section class="py-12 md:py-20 text-center" style="background: #EDE5D8;">
+    <div class="max-w-[700px] mx-auto px-4 md:px-6 reveal">
+        <span class="inline-block px-4 py-1.5 rounded-full text-[0.75rem] md:text-[0.85rem] font-semibold mb-6 border pulse-badge" style="background: rgba(122,158,126,0.2); color:#7a9e7e; border-color: rgba(122,158,126,0.4);">Intro Offer: 3 Sessions for $150</span>
+        <h2 class="font-heading text-[1.6rem] md:text-[2.5rem] text-[#2C3338] mb-4">Ready to See What PEMF Can Do?</h2>
+        <p class="text-[#5a6e5c] text-[0.95rem] md:text-[1.1rem] mb-4">We bring the Pulse XL Pro to you. 60 minutes, fully mobile, no commute. Most clients notice something after their very first session.</p>
+        <p class="text-[#2C3338] text-[1rem] md:text-[1.2rem] font-semibold mb-8 md:mb-10">What do you have to lose besides the pain?</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <a href="https://calendly.com/mendmobilewellness/mend-first-time-pemf-session-60-mins-clone?back=1&month=2026-04" class="btn-gold inline-flex items-center justify-center w-full sm:w-auto px-8 py-3.5 rounded text-[0.8rem] font-bold uppercase tracking-wider" style="color:#ffffff; text-decoration:none;">Book a Session</a>
+            <a href="tel:7022774395" class="btn-outline inline-flex items-center justify-center w-full sm:w-auto px-8 py-3.5 rounded text-[0.8rem] font-bold uppercase tracking-wider" style="text-decoration:none;">Call / Text Us</a>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="py-16 pb-20 md:pb-16 text-center text-sm text-[#5a6e5c]" style="background: #EAE4DA;">
+    <div class="max-w-container mx-auto px-4 md:px-6">
+        <div class="flex items-center justify-center mb-8">
+            <img src="MEND_LOGO_TRANSPARENT.png" alt="Mend Mobile Wellness &amp; Recovery" class="h-24 md:h-28 w-auto">
+        </div>
+        <div class="flex flex-wrap justify-center gap-4 md:gap-8 mb-8">
+            <a href="index.html#home"       class="text-[#2C3338] hover:text-gold transition-colors text-[0.85rem] md:text-[0.95rem] font-medium" style="text-decoration:none;">Home</a>
+            <a href="conditions.html"       class="text-gold text-[0.85rem] md:text-[0.95rem] font-medium" style="text-decoration:none;">Conditions</a>
+            <a href="index.html#process"    class="text-[#2C3338] hover:text-gold transition-colors text-[0.85rem] md:text-[0.95rem] font-medium" style="text-decoration:none;">How It Works</a>
+            <a href="testimonials.html"    class="text-[#2C3338] hover:text-gold transition-colors text-[0.85rem] md:text-[0.95rem] font-medium" style="text-decoration:none;">Testimonials</a>
+            <a href="index.html#faq"        class="text-[#2C3338] hover:text-gold transition-colors text-[0.85rem] md:text-[0.95rem] font-medium" style="text-decoration:none;">FAQ</a>
+            <a href="pricing.html"          class="text-[#2C3338] hover:text-gold transition-colors text-[0.85rem] md:text-[0.95rem] font-medium" style="text-decoration:none;">Pricing</a>
+            <a href="about.html"            class="text-[#2C3338] hover:text-gold transition-colors text-[0.85rem] md:text-[0.95rem] font-medium" style="text-decoration:none;">About</a>
+            <a href="tel:7022774395"        class="text-[#2C3338] hover:text-gold transition-colors text-[0.85rem] md:text-[0.95rem] font-medium" style="text-decoration:none;">Contact</a>
+        </div>
+        <div class="flex justify-center gap-4 mb-8">
+            <a href="#" class="w-10 h-10 rounded-full border border-black/20 flex items-center justify-center text-[#5a6e5c] hover:text-gold hover:border-gold transition-all">
+                <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full border border-black/20 flex items-center justify-center text-[#5a6e5c] hover:text-gold hover:border-gold transition-all">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                    <circle cx="12" cy="12" r="4"/>
+                    <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/>
+                </svg>
+            </a>
+        </div>
+        <div class="flex justify-center gap-6 mb-4 flex-wrap text-xs">
+            <a href="#" class="text-[#5a6e5c] hover:text-gold transition-colors" style="text-decoration:none;">Terms &amp; Conditions</a>
+            <span class="text-black/20">|</span>
+            <a href="#" class="text-[#5a6e5c] hover:text-gold transition-colors" style="text-decoration:none;">Privacy Policy</a>
+        </div>
+        <p class="text-xs text-[#5a6e5c] mb-0">© 2026 Mend Mobile Wellness &amp; Recovery. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<!-- ===================== SCRIPTS ===================== -->
+<script>
+    // Header scroll
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+        header.classList.toggle('header-scrolled', window.scrollY > 20);
+    });
+
+    // Mobile menu
+    const toggle = document.getElementById('mobileToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    toggle.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+    mobileMenu.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    });
+
+    // Scroll reveal
+    const revealObs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                revealObs.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.1 });
+    document.querySelectorAll('.reveal').forEach(el => revealObs.observe(el));
+
+    // Hero canvas particles
+    const canvas = document.getElementById('heroCanvas');
+    const ctx = canvas.getContext('2d');
+    function resizeCanvas() {
+        canvas.width = canvas.parentElement.offsetWidth;
+        canvas.height = canvas.parentElement.offsetHeight;
+    }
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
+    const particles = Array.from({ length: 60 }, () => ({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 1.5 + 0.5,
+        vx: (Math.random() - 0.5) * 0.4,
+        vy: (Math.random() - 0.5) * 0.4,
+        o: Math.random() * 0.4 + 0.1
+    }));
+    function drawCanvas() {
+        ctx.clearRect(0, 0, canvas.width, canvas.height);
+        particles.forEach(p => {
+            p.x += p.vx; p.y += p.vy;
+            if (p.x < 0 || p.x > canvas.width) p.vx *= -1;
+            if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+            ctx.beginPath();
+            ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+            ctx.fillStyle = `rgba(122,158,126,${p.o})`;
+            ctx.fill();
+        });
+        requestAnimationFrame(drawCanvas);
+    }
+    drawCanvas();
+</script>
+
+<!-- ===================== MOBILE STICKY BOOK BUTTON ===================== -->
+<div class="md:hidden fixed bottom-0 left-0 right-0 z-50 px-4 py-3" style="background: rgba(245,240,232,0.97); backdrop-filter: blur(12px); border-top: 1px solid rgba(122,158,126,0.2);">
+    <a href="https://calendly.com/mendmobilewellness/mend-first-time-pemf-session-60-mins-clone?back=1&month=2026-04" class="btn-gold w-full flex items-center justify-center py-3.5 rounded text-[0.8rem] font-bold uppercase tracking-wider" style="color:#ffffff; text-decoration:none;">Book a Session</a>
+</div>
+</body>
+</html>

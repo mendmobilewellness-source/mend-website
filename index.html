@@ -1,0 +1,837 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile PEMF Therapy in West LA | Mend Mobile Wellness &amp; Recovery</title>
+    <meta name="description" content="Mend brings professional PEMF therapy to your home, gym, or wellness space in West LA. 60-minute mobile sessions with the Pulse XL Pro. Book your intro offer today.">
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    colors: {
+                        'navy-dark': '#F5F0E8',
+                        'navy-card': '#EDE5D8',
+                        'navy-light': '#E4DAC8',
+                        'gold': '#7a9e7e',
+                        'gold-light': '#9ab89e',
+                        'blue-accent': '#7a9e7e',
+                        'text-muted': '#5a6e5c',
+                    },
+                    fontFamily: {
+                        heading: ['"Inter"', 'serif'],
+                        body: ['"DM Sans"', 'sans-serif'],
+                        lora: ['DM Sans', 'serif'],
+                    },
+                    maxWidth: {
+                        container: '1200px',
+                    }
+                }
+            }
+        }
+    </script>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;600;700&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+        <style>
+        :root {
+            --c-gold: #7a9e7e;
+            --c-gold-glow: rgba(122,158,126,0.4);
+            --c-navy-dark: #F5F0E8;
+            --c-navy-card: #EDE5D8;
+            --trans: all 0.4s cubic-bezier(0.25,1,0.5,1);
+        }
+
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: #F5F0E8;
+            font-family: 'DM Sans', sans-serif;
+            -webkit-font-smoothing: antialiased;
+            overflow-x: hidden;
+        }
+
+        /* ---- Gradient Utilities ---- */
+        .grad-gold { background: linear-gradient(135deg, #7a9e7e 0%, #9ab89e 100%); }
+        .text-white-grad {
+            color: #2C3338;
+        }
+
+        /* ---- Button Hover ---- */
+        .btn-gold {
+            background: linear-gradient(135deg, #7a9e7e 0%, #9ab89e 100%);
+            box-shadow: 0 4px 20px rgba(122,158,126,0.4);
+            transition: var(--trans);
+        }
+        .btn-gold:hover { transform: translateY(-3px); box-shadow: 0 8px 30px rgba(122,158,126,0.5); }
+
+        .btn-outline {
+            background: transparent;
+            border: 1px solid #7a9e7e;
+            transition: var(--trans);
+            color: #2C3338;
+        }
+        .btn-outline:hover { border-color: #7a9e7e; color: #7a9e7e; }
+
+        /* ---- Nav Underline ---- */
+        .nav-link { position: relative; }
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -4px; left: 0;
+            width: 0; height: 2px;
+            background: var(--c-gold);
+            transition: var(--trans);
+        }
+        .nav-link:hover::after, .nav-link.active::after { width: 100%; }
+
+        /* ---- Header Scroll ---- */
+        .header-scrolled {
+            background: rgba(245,240,232,0.98) !important;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.3);
+        }
+
+        /* ---- Mobile Menu ---- */
+        .mobile-menu {
+            transform: translateY(-150%);
+            transition: var(--trans);
+        }
+        .mobile-menu.open { transform: translateY(0); }
+
+        /* ---- Scroll Reveal ---- */
+        .reveal { opacity: 0; transform: translateY(30px); transition: all 0.8s ease-out; }
+        .reveal.active { opacity: 1; transform: translateY(0); }
+
+        /* ---- Canvas ---- */
+        #heroCanvas {
+            position: absolute; top: 0; left: 0;
+            width: 100%; height: 100%;
+            pointer-events: none;
+            z-index: 1;
+            opacity: 0.55;
+        }
+        @media(max-width: 900px) { #heroCanvas { display: none; } }
+
+        /* ---- Session Bar Animation ---- */
+        .bar-fill {
+            height: 100%;
+            border-radius: 6px;
+            width: 0;
+            transition: width 1.5s ease-out;
+        }
+        .bar-standard { background: #bbb; }
+        .bar-magic {
+            background: linear-gradient(135deg, #7a9e7e 0%, #9ab89e 100%);
+            box-shadow: 0 0 10px rgba(122,158,126,0.4);
+        }
+
+        /* ---- Timeline ---- */
+        .timeline { position: relative; }
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 21px; top: 0; bottom: 0;
+            width: 2px;
+            background: linear-gradient(to bottom, transparent, var(--c-gold), transparent);
+        }
+
+        /* ---- Testimonial Slider ---- */
+        .slides-track { display: flex; transition: transform 0.5s ease-in-out; }
+        .slide { min-width: 100%; padding: 0 1rem; box-sizing: border-box; }
+
+        /* ---- Slider Dots ---- */
+        .slider-dot {
+            width: 44px; height: 44px;
+            border-radius: 50%;
+            background: transparent;
+            border: none;
+            cursor: pointer;
+            display: flex; align-items: center; justify-content: center;
+        }
+        .slider-dot::after {
+            content: '';
+            display: block;
+            width: 12px; height: 12px;
+            border-radius: 50%;
+            background: rgba(0,0,0,0.15);
+            transition: all 0.3s;
+        }
+        .slider-dot.active::after {
+            background: var(--c-gold);
+            transform: scale(1.2);
+        }
+
+        /* ---- FAQ ---- */
+        .faq-content { height: 0; overflow: hidden; transition: height 0.3s ease; }
+        .faq-item.open .faq-content { height: auto; }
+        .faq-icon { transition: transform 0.3s ease; color: var(--c-gold); }
+        .faq-item.open .faq-icon { transform: rotate(45deg); }
+
+        /* ---- Pulse Badge ---- */
+        @keyframes pulse-ring {
+            0% { box-shadow: 0 0 0 0 rgba(122,158,126,0.4); }
+            70% { box-shadow: 0 0 0 10px rgba(122,158,126,0); }
+            100% { box-shadow: 0 0 0 0 rgba(122,158,126,0); }
+        }
+        .pulse-badge { animation: pulse-ring 2s infinite; }
+
+        /* ---- Hero Image Min Height ---- */
+        .hero-img-wrap {
+            border-radius: 12px;
+            overflow: hidden;
+            box-shadow: 0 20px 60px rgba(0,0,0,0.4);
+            border: 2px solid rgba(122,158,126,0.4);
+            min-height: 600px;
+            align-self: stretch;
+        }
+        .hero-img-wrap img {
+            width: 100%;
+            height: 100%;
+            display: block;
+            object-fit: cover;
+            object-position: center top;
+        }
+        @media(max-width: 900px) {
+            .hero-img-wrap { min-height: unset; align-self: auto; border-radius: 10px; }
+            .hero-img-wrap img { height: 280px; object-fit: cover; object-position: center 20%; }
+        }
+
+        /* ---- Condition Card ---- */
+        .condition-card { transition: var(--trans); }
+        .condition-card:hover {
+            transform: translateY(-8px);
+            border-color: var(--c-gold) !important;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.4);
+        }
+
+        /* ---- Section Border ---- */
+        section { border-bottom: 1px solid rgba(0,0,0,0.06); }
+    </style>
+</head>
+<body class="text-[#2C3338]">
+
+<!-- ===================== HEADER ===================== -->
+<header id="header" class="fixed top-0 w-full z-50 h-20 border-b border-black/5 transition-all duration-300" style="background: rgba(245,240,232,0.95); backdrop-filter: blur(12px);">
+    <div class="max-w-container mx-auto px-6 h-full flex items-center justify-between">
+        <!-- Logo -->
+        <a href="#home" style="text-decoration: none;">
+            <img src="MEND_LOGO_TRANSPARENT.png" alt="Mend Mobile Wellness &amp; Recovery" class="h-24 md:h-28 w-auto">
+        </a>
+
+        <!-- Desktop Nav -->
+        <nav class="hidden md:flex items-center gap-8">
+            <a href="#home"       class="nav-link text-[#2C3338] hover:text-gold text-[0.95rem] font-medium transition-colors" style="text-decoration:none;">Home</a>
+            <a href="conditions.html" class="nav-link text-[#2C3338] hover:text-gold text-[0.95rem] font-medium transition-colors" style="text-decoration:none;">Conditions</a>
+            <a href="#process"    class="nav-link text-[#2C3338] hover:text-gold text-[0.95rem] font-medium transition-colors" style="text-decoration:none;">How It Works</a>
+            <a href="testimonials.html"    class="nav-link text-[#2C3338] hover:text-gold text-[0.95rem] font-medium transition-colors" style="text-decoration:none;">Testimonials</a>
+            <a href="#faq"        class="nav-link text-[#2C3338] hover:text-gold text-[0.95rem] font-medium transition-colors" style="text-decoration:none;">FAQ</a>
+            <a href="pricing.html" class="nav-link text-[#2C3338] hover:text-gold text-[0.95rem] font-medium transition-colors" style="text-decoration:none;">Pricing</a>
+            <a href="about.html"  class="nav-link text-[#2C3338] hover:text-gold text-[0.95rem] font-medium transition-colors" style="text-decoration:none;">About</a>
+            <a href="https://calendly.com/mendmobilewellness/mend-first-time-pemf-session-60-mins-clone?back=1&month=2026-04" class="btn-gold text-navy-dark px-6 py-2.5 rounded text-[0.8rem] font-bold uppercase tracking-wider" style="text-decoration:none; color: #ffffff;">Book Now</a>
+        </nav>
+
+        <!-- Mobile Toggle -->
+        <button id="mobileToggle" class="md:hidden text-gold w-11 h-11 flex items-center justify-center" aria-label="Toggle menu">
+            <svg id="menuIcon" width="24" height="24" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                <path d="M4 6h16M4 12h16M4 18h16" stroke-linecap="round"/>
+            </svg>
+        </button>
+    </div>
+</header>
+
+<!-- Mobile Menu -->
+<div id="mobileMenu" class="mobile-menu fixed w-full z-40 flex flex-col gap-4 p-6 border-b border-black/5" style="top:80px; background: rgba(245,240,232,0.97); backdrop-filter: blur(12px);">
+    <a href="#home"       class="text-[#2C3338] font-medium py-3 border-b border-black/10 hover:text-gold transition-colors" style="text-decoration:none;">Home</a>
+    <a href="conditions.html" class="text-[#2C3338] font-medium py-3 border-b border-black/10 hover:text-gold transition-colors" style="text-decoration:none;">Conditions</a>
+    <a href="#process"    class="text-[#2C3338] font-medium py-3 border-b border-black/10 hover:text-gold transition-colors" style="text-decoration:none;">How It Works</a>
+    <a href="testimonials.html"    class="text-[#2C3338] font-medium py-3 border-b border-black/10 hover:text-gold transition-colors" style="text-decoration:none;">Testimonials</a>
+    <a href="#faq"        class="text-[#2C3338] font-medium py-3 border-b border-black/10 hover:text-gold transition-colors" style="text-decoration:none;">FAQ</a>
+    <a href="pricing.html" class="text-[#2C3338] font-medium py-3 border-b border-black/10 hover:text-gold transition-colors" style="text-decoration:none;">Pricing</a>
+    <a href="about.html"  class="text-[#2C3338] font-medium py-3 border-b border-black/10 hover:text-gold transition-colors" style="text-decoration:none;">About</a>
+    <a href="https://calendly.com/mendmobilewellness/mend-first-time-pemf-session-60-mins-clone?back=1&month=2026-04" class="btn-gold text-center py-3 rounded text-[0.8rem] font-bold uppercase tracking-wider mt-1" style="text-decoration:none; color:#ffffff;">Book Consultation</a>
+</div>
+
+<!-- ===================== HERO ===================== -->
+<section id="home" class="relative pt-20 flex items-center overflow-hidden" style="background: linear-gradient(135deg, #F5F0E8 0%, #EDE5D8 100%);">
+    <canvas id="heroCanvas"></canvas>
+
+    <div class="max-w-container mx-auto px-4 md:px-6 w-full relative z-10 py-8 md:py-12">
+        <div class="grid md:grid-cols-[1.2fr_0.8fr] gap-8 md:gap-16 items-center">
+
+            <!-- Left: Text -->
+            <div class="rounded-xl p-5 md:p-10 border border-black/8" style="background: rgba(245,240,232,0.85); backdrop-filter: blur(8px); border: 1px solid rgba(0,0,0,0.08);">
+                <span class="block text-gold text-[0.75rem] md:text-[0.8rem] font-bold uppercase tracking-[2px] mb-3">
+                    Mobile | On Site | No Needles | No Supplements
+                </span>
+                <h1 class="font-heading text-[2rem] md:text-[3.5rem] leading-[1.2] mb-4 text-[#2C3338]">Helping Your Body Do What It's Designed to Do</h1>
+                <p class="text-[#5a6e5c] text-[0.95rem] md:text-[1.25rem] mb-6 max-w-xl">PEMF supports your body at the cellular level, helping promote circulation, energy, and natural recovery. We come to you, at your home, gym, or wellness space.</p>
+
+                <div class="flex flex-col sm:flex-row gap-3 mb-6">
+                    <a href="https://calendly.com/mendmobilewellness/mend-first-time-pemf-session-60-mins-clone?back=1&month=2026-04" class="btn-gold inline-flex items-center justify-center w-full sm:w-auto px-7 py-3 rounded text-[0.8rem] font-bold uppercase tracking-wider" style="color:#ffffff; text-decoration:none;">Book a Session</a>
+                    <a href="#process" class="btn-outline inline-flex items-center justify-center w-full sm:w-auto px-7 py-3 rounded text-[0.8rem] font-bold uppercase tracking-wider" style="text-decoration:none;">See How It Works</a>
+                </div>
+
+                <div class="flex flex-wrap items-center gap-2 text-sm text-[#5a6e5c] mb-4">
+                    <a href="https://share.google/0AnGXwo76QHGTyBA1" target="_blank" rel="noopener" class="flex items-center gap-2" style="text-decoration:none; color:inherit;">
+                        <span class="text-gold tracking-widest">★★★★★</span>
+                        <span>5.0/5 Stars on Google</span>
+                    </a>
+                </div>
+
+                <!-- Quote -->
+                <div class="mt-4 p-3 md:p-4 rounded" style="background: rgba(122,158,126,0.1); border-left: 3px solid #7a9e7e;">
+                    <p class="italic text-[#5a6e5c] text-[0.9rem] md:text-[1rem] m-0">"Faster recovery, better healing with injuries, and deeper sleep. I wake up feeling more refreshed and ready to go."</p>
+                    <p class="mt-2 mb-0 text-sm text-gold font-semibold">Keni Harrison &nbsp;·&nbsp; Olympic Medalist</p>
+                </div>
+            </div>
+
+            <!-- Right: Image -->
+            <div class="hero-img-wrap">
+                <img src="hero_image_mend.png"
+                     alt="Mend Mobile Wellness and Recovery PEMF session"
+                     loading="eager"
+                     style="image-rendering: -webkit-optimize-contrast; image-rendering: crisp-edges;">
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== QUICK OUTCOMES ===================== -->
+<div class="py-4 md:py-3 border-t border-b" style="background: rgba(237,229,216,0.5); border-color: rgba(122,158,126,0.2);">
+    <div class="max-w-[850px] mx-auto px-4 md:px-6">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-2 md:gap-8">
+            <div class="flex items-center gap-3 justify-center py-2 md:py-0">
+                <div class="w-[22px] h-[22px] rounded-full grad-gold flex items-center justify-center flex-shrink-0 text-[0.75rem] md:text-[0.85rem] font-bold" style="color:#ffffff;">✓</div>
+                <span class="text-[#2C3338] font-semibold text-[0.95rem]">Less Pain &amp; Discomfort</span>
+            </div>
+            <div class="flex items-center gap-3 justify-center py-2 md:py-0">
+                <div class="w-[22px] h-[22px] rounded-full grad-gold flex items-center justify-center flex-shrink-0 text-[0.75rem] md:text-[0.85rem] font-bold" style="color:#ffffff;">✓</div>
+                <span class="text-[#2C3338] font-semibold text-[0.95rem]">More Energy &amp; Vitality</span>
+            </div>
+            <div class="flex items-center gap-3 justify-center py-2 md:py-0">
+                <div class="w-[22px] h-[22px] rounded-full grad-gold flex items-center justify-center flex-shrink-0 text-[0.75rem] md:text-[0.85rem] font-bold" style="color:#ffffff;">✓</div>
+                <span class="text-[#2C3338] font-semibold text-[0.95rem]">Better Sleep Quality</span>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- ===================== FULL SESSIONS ===================== -->
+<section id="difference" class="py-10 md:py-[70px]">
+    <div class="max-w-container mx-auto px-4 md:px-6">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-8 md:gap-16 items-center">
+
+            <!-- Left -->
+            <div class="reveal">
+                <h2 class="font-heading text-[1.8rem] md:text-[2.5rem] text-[#2C3338] mb-4">Full Sessions, Not Add Ons</h2>
+                <p class="text-[#5a6e5c] text-[1.05rem] mb-4">PEMF stands for Pulsed Electromagnetic Field therapy. Every cell in your body carries a small electrical charge that helps it communicate, repair, and recover. Over time, through stress, injury, or daily wear, those signals can weaken.</p>
+                <p class="text-[#5a6e5c] text-[1.05rem] mb-8">The Pulse XL Pro sends gentle, low frequency magnetic pulses through the body to recharge those signals, promoting balance, circulation, and natural recovery.</p>
+
+                <div class="flex flex-col gap-6">
+                    <div class="flex gap-4 items-start">
+                        <div class="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 p-[10px]" style="background: rgba(122,158,126,0.15);">
+                            <!-- Deeper Penetration: waves radiating inward -->
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#7a9e7e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full"><path d="M12 12m-1 0a1 1 0 1 0 2 0a1 1 0 1 0-2 0"/><path d="M5 12a7 7 0 0 1 14 0"/><path d="M2 12a10 10 0 0 1 20 0"/></svg>
+                        </div>
+                        <div>
+                            <h4 class="font-heading text-[#2C3338] text-lg mb-1">Deeper Penetration</h4>
+                            <p class="text-[#5a6e5c] text-[0.95rem] mb-0">Reaches deep into tissue to promote circulation and cellular communication.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 items-start">
+                        <div class="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 p-[10px]" style="background: rgba(122,158,126,0.15);">
+                            <!-- Cellular Exercise: atom / cell -->
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#7a9e7e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full"><circle cx="12" cy="12" r="2"/><ellipse cx="12" cy="12" rx="10" ry="4"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(60 12 12)"/><ellipse cx="12" cy="12" rx="10" ry="4" transform="rotate(120 12 12)"/></svg>
+                        </div>
+                        <div>
+                            <h4 class="font-heading text-[#2C3338] text-lg mb-1">Cellular Exercise</h4>
+                            <p class="text-[#5a6e5c] text-[0.95rem] mb-0">Stimulates cells to improve oxygenation and boost natural energy production.</p>
+                        </div>
+                    </div>
+                    <div class="flex gap-4 items-start">
+                        <div class="w-12 h-12 rounded-full flex items-center justify-center flex-shrink-0 p-[10px]" style="background: rgba(122,158,126,0.15);">
+                            <!-- Lasting Results: upward trend -->
+                            <svg viewBox="0 0 24 24" fill="none" stroke="#7a9e7e" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" class="w-full h-full"><polyline points="3 17 9 11 13 15 21 7"/><polyline points="17 7 21 7 21 11"/></svg>
+                        </div>
+                        <div>
+                            <h4 class="font-heading text-[#2C3338] text-lg mb-1">Lasting Results</h4>
+                            <p class="text-[#5a6e5c] text-[0.95rem] mb-0">Sessions build on each other. Most clients feel results compound over time.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Right: Chart -->
+            <div class="reveal rounded-xl p-5 md:p-8 border border-black/8 relative overflow-hidden" style="background: #EDE5D8;">
+                <h3 class="font-heading text-xl text-[#2C3338] mb-6">Session Comparison</h3>
+
+                <div class="mb-8">
+                    <div class="flex justify-between mb-2 text-sm font-semibold">
+                        <span class="text-[#5a6e5c]">Standard Add On</span>
+                        <span class="text-[#5a6e5c]">10 Mins</span>
+                    </div>
+                    <div class="w-full h-3 rounded-full overflow-hidden" style="background: rgba(0,0,0,0.1);">
+                        <div class="bar-fill bar-standard" data-width="15%"></div>
+                    </div>
+                    <p class="text-[0.8rem] text-[#5a6e5c] mt-1 mb-0">Surface level relief</p>
+                </div>
+
+                <div>
+                    <div class="flex justify-between mb-2 text-sm font-semibold">
+                        <span class="text-gold">Mend Session</span>
+                        <span class="text-gold">60 Mins</span>
+                    </div>
+                    <div class="w-full h-3 rounded-full overflow-hidden" style="background: rgba(0,0,0,0.1);">
+                        <div class="bar-fill bar-magic" data-width="100%"></div>
+                    </div>
+                    <p class="text-[0.8rem] text-gold mt-1 mb-0">Deep tissue &amp; cellular support</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== SOUND FAMILIAR ===================== -->
+<section class="py-10 md:py-[70px]" style="background: rgba(237,229,216,0.3);">
+    <div class="max-w-container mx-auto px-4 md:px-6">
+        <div class="text-center max-w-[800px] mx-auto mb-10 reveal">
+            <h2 class="font-heading text-[1.6rem] md:text-[2.5rem] text-[#2C3338] mb-4">Sound Familiar?</h2>
+            <p class="text-[#5a6e5c] text-[0.95rem] md:text-[1.35rem]">This is what people told us before they tried PEMF.</p>
+        </div>
+
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-8 reveal">
+            <div class="text-center p-5 md:p-8 rounded-xl border" style="background: rgba(245,240,232,0.5); border-color: rgba(122,158,126,0.2);">
+                <p class="text-[0.95rem] md:text-[1.2rem] italic text-[#5a6e5c] leading-relaxed mb-6">Shoulder pain I couldn't shake no matter what I tried.</p>
+                <div class="h-0.5 w-12 mx-auto my-4" style="background:#7a9e7e;"></div>
+                <p class="text-gold font-semibold text-[1rem] mb-0">Now: "After the session my shoulders felt so amazing"</p>
+            </div>
+            <div class="text-center p-5 md:p-8 rounded-xl border" style="background: rgba(245,240,232,0.5); border-color: rgba(122,158,126,0.2);">
+                <p class="text-[0.95rem] md:text-[1.2rem] italic text-[#5a6e5c] leading-relaxed mb-6">I come back for more because I just feel so much better.</p>
+                <div class="h-0.5 w-12 mx-auto my-4" style="background:#7a9e7e;"></div>
+                <p class="text-gold font-semibold text-[1rem] mb-0">Now: "Able to get up with no pain and slept very well"</p>
+            </div>
+            <div class="text-center p-5 md:p-8 rounded-xl border" style="background: rgba(245,240,232,0.5); border-color: rgba(122,158,126,0.2);">
+                <p class="text-[0.95rem] md:text-[1.2rem] italic text-[#5a6e5c] leading-relaxed mb-6">My 70 year old mother in law says she's never felt so good.</p>
+                <div class="h-0.5 w-12 mx-auto my-4" style="background:#7a9e7e;"></div>
+                <p class="text-gold font-semibold text-[1rem] mb-0">Now: "She loves it and finds relief. 100% recommend it"</p>
+            </div>
+        </div>
+
+        <div class="text-center mt-10 reveal">
+            <p class="text-[#2C3338] text-[0.95rem] md:text-[1.35rem] mb-6">Ready to write your own success story?</p>
+            <a href="https://calendly.com/mendmobilewellness/mend-first-time-pemf-session-60-mins-clone?back=1&month=2026-04" class="btn-gold inline-flex items-center px-7 py-3 rounded text-[0.8rem] font-bold uppercase tracking-wider" style="color:#ffffff; text-decoration:none;">Book Your First Session</a>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== HOW IT WORKS ===================== -->
+<section id="process" class="py-10 md:py-[70px]" style="background: rgba(255,255,255,0.01);">
+    <div class="max-w-container mx-auto px-4 md:px-6">
+        <div class="text-center max-w-[800px] mx-auto mb-10 reveal">
+            <h2 class="font-heading text-[1.6rem] md:text-[2.5rem] text-[#2C3338] mb-4">How It Works</h2>
+            <p class="text-[#5a6e5c] text-[0.95rem] md:text-[1.35rem]">Simple. Straightforward. No gimmicks.</p>
+        </div>
+
+        <div class="timeline max-w-[800px] mx-auto py-6 md:py-8">
+            <!-- Step 1 -->
+            <div class="flex gap-5 md:gap-8 mb-10 md:mb-16 reveal">
+                <div class="w-9 h-9 md:w-11 md:h-11 rounded-full border-2 border-gold flex items-center justify-center text-gold text-sm md:text-base font-bold flex-shrink-0 z-10" style="background:#F5F0E8; box-shadow: 0 0 15px rgba(122,158,126,0.4);">1</div>
+                <div class="flex-1 p-4 md:p-6 rounded-lg border border-black/8" style="background: rgba(0,0,0,0.04);">
+                    <span class="inline-block px-3 py-1 rounded-full text-[0.75rem] md:text-[0.8rem] font-semibold mb-2" style="background: rgba(91,163,208,0.1); color:#7a9e7e;">5 to 10 Minutes</span>
+                    <h3 class="font-heading text-[1.1rem] md:text-[1.35rem] text-[#2C3338] mb-2">We Talk</h3>
+                    <p class="text-[#5a6e5c] text-[0.9rem] md:text-[1.05rem] mb-0">Tell me what's going on. I'll figure out if PEMF might be a good fit for you.</p>
+                </div>
+            </div>
+
+            <!-- Step 2 -->
+            <div class="flex gap-5 md:gap-8 mb-10 md:mb-16 reveal">
+                <div class="w-9 h-9 md:w-11 md:h-11 rounded-full border-2 border-gold flex items-center justify-center text-gold text-sm md:text-base font-bold flex-shrink-0 z-10" style="background:#F5F0E8; box-shadow: 0 0 15px rgba(122,158,126,0.4);">2</div>
+                <div class="flex-1 p-4 md:p-6 rounded-lg border border-black/8" style="background: rgba(0,0,0,0.04);">
+                    <span class="inline-block px-3 py-1 rounded-full text-[0.75rem] md:text-[0.8rem] font-semibold mb-2" style="background: rgba(91,163,208,0.1); color:#7a9e7e;">60 Minutes</span>
+                    <h3 class="font-heading text-[1.1rem] md:text-[1.35rem] text-[#2C3338] mb-2">Your Session</h3>
+                    <p class="text-[#5a6e5c] text-[0.9rem] md:text-[1.05rem] mb-0">I come to you. 60 minutes with the Pulse XL Pro. I handle setup, intensity, and positioning.</p>
+                </div>
+            </div>
+
+            <!-- Step 3 -->
+            <div class="flex gap-5 md:gap-8 mb-10 md:mb-16 reveal">
+                <div class="w-9 h-9 md:w-11 md:h-11 rounded-full border-2 border-gold flex items-center justify-center text-gold text-sm md:text-base font-bold flex-shrink-0 z-10" style="background:#F5F0E8; box-shadow: 0 0 15px rgba(122,158,126,0.4);">3</div>
+                <div class="flex-1 p-4 md:p-6 rounded-lg border border-black/8" style="background: rgba(0,0,0,0.04);">
+                    <span class="inline-block px-3 py-1 rounded-full text-[0.75rem] md:text-[0.8rem] font-semibold mb-2" style="background: rgba(91,163,208,0.1); color:#7a9e7e;">24h to 12 Weeks</span>
+                    <h3 class="font-heading text-[1.1rem] md:text-[1.35rem] text-[#2C3338] mb-2">See How You Feel</h3>
+                    <p class="text-[#5a6e5c] text-[0.9rem] md:text-[1.05rem] mb-0">Most clients notice something after their first session. Consistent sessions build on each other for lasting results.</p>
+                </div>
+            </div>
+
+            <div class="text-center mt-4">
+                <a href="conditions.html" class="btn-outline inline-flex items-center px-7 py-3 rounded text-[0.8rem] font-bold uppercase tracking-wider" style="text-decoration:none;">Learn More About PEMF</a>
+            </div>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== TESTIMONIALS ===================== -->
+<section id="stories" class="py-10 md:py-[70px]">
+    <div class="max-w-container mx-auto px-4 md:px-6">
+        <div class="text-center max-w-[800px] mx-auto mb-10 reveal">
+            <h2 class="font-heading text-[1.8rem] md:text-[2.5rem] text-[#2C3338] mb-4">From Our Clients</h2>
+            <p class="text-[#5a6e5c] text-[1rem] md:text-[1.35rem]">Real people, real experiences. Their words.</p>
+            <div class="inline-flex items-center gap-3 px-6 py-3 rounded-full mt-4 border" style="background:#EDE5D8; border: 1px solid rgba(122,158,126,0.4);">
+                <span class="text-gold font-bold">5.0/5</span>
+                <span class="text-gold tracking-widest">★★★★★</span>
+                <span class="text-[#5a6e5c]">on Google</span>
+            </div>
+        </div>
+
+        <div class="relative overflow-hidden max-w-[900px] mx-auto px-5 reveal">
+            <div class="slides-track" id="track" style="transform: translateX(0%);">
+                <!-- Slide 1 -->
+                <div class="slide">
+                    <div class="rounded-xl p-6 md:p-12 text-center border flex flex-col justify-center" style="min-height:auto; background:#EDE5D8; border-color: rgba(122,158,126,0.2); box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+                        <div class="text-gold tracking-widest mb-4">★★★★★</div>
+                        <p class="font-body text-[1rem] md:text-[1.4rem] italic text-[#2C3338] leading-relaxed mb-6">"I love this in home service so much, and Sage is an absolute gem! He's prompt, professional, and very kind. His PEMF technology is like nothing I've ever seen, or experienced. Not only is PEMF helping me recover from an arm injury, but it leaves me feeling super relaxed, in much less pain, and I sleep so well the night after treatment. 10/10 would recommend!"</p>
+                        <div class="mt-6">
+                            <span class="block text-gold font-bold">Caitlin Tinney</span>
+                            <span class="text-[0.85rem] text-[#7a9e7e] uppercase tracking-widest">Arm Injury Recovery</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slide 2 -->
+                <div class="slide">
+                    <div class="rounded-xl p-6 md:p-12 text-center border flex flex-col justify-center" style="min-height:auto; background:#EDE5D8; border-color: rgba(122,158,126,0.2); box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+                        <div class="text-gold tracking-widest mb-4">★★★★★</div>
+                        <p class="font-body text-[1rem] md:text-[1.4rem] italic text-[#2C3338] leading-relaxed mb-6">"As an Olympic medalist, I'm always looking for ways to take my recovery to the next level. Using PEMF has honestly been a huge help I've seen faster recovery, better healing with injuries, and deeper sleep. And as an athlete, that quality sleep is everything. I wake up feeling more refreshed and ready to go."</p>
+                        <div class="mt-6">
+                            <span class="block text-gold font-bold">Keni Harrison</span>
+                            <span class="text-[0.85rem] text-[#7a9e7e] uppercase tracking-widest">Olympic Medalist · Recovery & Sleep</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slide 3 -->
+                <div class="slide">
+                    <div class="rounded-xl p-6 md:p-12 text-center border flex flex-col justify-center" style="min-height:auto; background:#EDE5D8; border-color: rgba(122,158,126,0.2); box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+                        <div class="text-gold tracking-widest mb-4">★★★★★</div>
+                        <p class="font-body text-[1rem] md:text-[1.4rem] italic text-[#2C3338] leading-relaxed mb-6">"Doing PEMF has helped me in mental clarity, recovering from injury, and helping my body function to the best of its ability."</p>
+                        <div class="mt-6">
+                            <span class="block text-gold font-bold">Gabriel A.</span>
+                            <span class="text-[0.85rem] text-[#7a9e7e] uppercase tracking-widest">Tense Back & Leg Muscles</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slide 4 -->
+                <div class="slide">
+                    <div class="rounded-xl p-6 md:p-12 text-center border flex flex-col justify-center" style="min-height:auto; background:#EDE5D8; border-color: rgba(122,158,126,0.2); box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+                        <div class="text-gold tracking-widest mb-4">★★★★★</div>
+                        <p class="font-body text-[1rem] md:text-[1.4rem] italic text-[#2C3338] leading-relaxed mb-6">"Walking in is like walking into home. Feel refreshed and relaxed. Not invasive at all."</p>
+                        <div class="mt-6">
+                            <span class="block text-gold font-bold">Sherry S.</span>
+                            <span class="text-[0.85rem] text-[#7a9e7e] uppercase tracking-widest">Back, Neck & Digestive Issues</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slide 5 -->
+                <div class="slide">
+                    <div class="rounded-xl p-6 md:p-12 text-center border flex flex-col justify-center" style="min-height:auto; background:#EDE5D8; border-color: rgba(122,158,126,0.2); box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+                        <div class="text-gold tracking-widest mb-4">★★★★★</div>
+                        <p class="font-body text-[1rem] md:text-[1.4rem] italic text-[#2C3338] leading-relaxed mb-6">"Extremely relaxing. Felt renewed. Benefits are amazing. Feel like a younger version of myself."</p>
+                        <div class="mt-6">
+                            <span class="block text-gold font-bold">John A.</span>
+                            <span class="text-[0.85rem] text-[#7a9e7e] uppercase tracking-widest">Back Pain, Sciatica & Arthritis</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slide 6 -->
+                <div class="slide">
+                    <div class="rounded-xl p-6 md:p-12 text-center border flex flex-col justify-center" style="min-height:auto; background:#EDE5D8; border-color: rgba(122,158,126,0.2); box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+                        <div class="text-gold tracking-widest mb-4">★★★★★</div>
+                        <p class="font-body text-[1rem] md:text-[1.4rem] italic text-[#2C3338] leading-relaxed mb-6">"Very relaxing, makes me fall asleep. Wake refreshed. Nothing better after hard work."</p>
+                        <div class="mt-6">
+                            <span class="block text-gold font-bold">Steve M.</span>
+                            <span class="text-[0.85rem] text-[#7a9e7e] uppercase tracking-widest">Sore Shoulders, Knees & Back</span>
+                        </div>
+                    </div>
+                </div>
+                <!-- Slide 7 -->
+                <div class="slide">
+                    <div class="rounded-xl p-6 md:p-12 text-center border flex flex-col justify-center" style="min-height:auto; background:#EDE5D8; border-color: rgba(122,158,126,0.2); box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+                        <div class="text-gold tracking-widest mb-4">★★★★★</div>
+                        <p class="font-body text-[1rem] md:text-[1.4rem] italic text-[#2C3338] leading-relaxed mb-6">"I love this in home service so much, and Sage is an absolute gem! He's prompt, professional, and very kind. His PEMF technology is like nothing I've ever seen, or experienced. Not only is PEMF helping me recover from an arm injury, but it leaves me feeling super relaxed, in much less pain, and I sleep so well the night after treatment. 10/10 would recommend!"</p>
+                        <div class="mt-6">
+                            <span class="block text-gold font-bold">Caitlin Tinney</span>
+                            <span class="text-[0.85rem] text-[#7a9e7e] uppercase tracking-widest">Arm Injury Recovery</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Dots -->
+            <div class="flex justify-center gap-2 mt-8">
+                <button class="slider-dot active" onclick="goToSlide(0)" aria-label="Slide 1"></button>
+                <button class="slider-dot" onclick="goToSlide(1)" aria-label="Slide 2"></button>
+                <button class="slider-dot" onclick="goToSlide(2)" aria-label="Slide 3"></button>
+                <button class="slider-dot" onclick="goToSlide(3)" aria-label="Slide 4"></button>
+                <button class="slider-dot" onclick="goToSlide(4)" aria-label="Slide 5"></button>
+                <button class="slider-dot" onclick="goToSlide(5)" aria-label="Slide 6"></button>
+                <button class="slider-dot" onclick="goToSlide(6)" aria-label="Slide 7"></button>
+            </div>
+        </div>
+
+        <div class="text-center mt-8">
+            <a href="https://share.google/0AnGXwo76QHGTyBA1" target="_blank" rel="noopener" class="btn-outline inline-flex items-center justify-center w-full sm:w-auto px-7 py-3 rounded text-[0.8rem] font-bold uppercase tracking-wider" style="text-decoration:none;">Read More Reviews</a>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== FAQ ===================== -->
+<section id="faq" class="py-10 md:py-[70px]">
+    <div class="max-w-container mx-auto px-4 md:px-6">
+        <div class="text-center max-w-[800px] mx-auto mb-10 reveal">
+            <h2 class="font-heading text-[1.8rem] md:text-[2.5rem] text-[#2C3338] mb-4">Questions I Get Asked</h2>
+            <p class="text-[#5a6e5c] text-[1rem] md:text-[1.35rem]">Fair questions. Straight answers.</p>
+        </div>
+
+        <div class="max-w-[800px] mx-auto reveal">
+            <!-- FAQ 1 -->
+            <div class="faq-item border-b border-black/10">
+                <button class="w-full flex justify-between items-center py-4 min-h-[52px] bg-transparent border-none text-[#2C3338] font-heading text-[0.95rem] md:text-[1.35rem] text-left cursor-pointer" onclick="toggleFaq(this)">
+                    Is this scientifically backed?
+                    <span class="faq-icon flex-shrink-0">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 5V15M5 10H15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    </span>
+                </button>
+                <div class="faq-content">
+                    <p class="text-[#5a6e5c] text-[0.9rem] md:text-[1rem] pb-4 pr-6 md:pr-8 mb-0">Yes. PEMF therapy has been studied for decades, with thousands of peer reviewed studies and RCT research supporting its effects on circulation, cellular recovery, and pain reduction. We use the Pulse XL Pro, one of the most respected devices in the field.</p>
+                </div>
+            </div>
+            <!-- FAQ 2 -->
+            <div class="faq-item border-b border-black/10">
+                <button class="w-full flex justify-between items-center py-4 min-h-[52px] bg-transparent border-none text-[#2C3338] font-heading text-[0.95rem] md:text-[1.35rem] text-left cursor-pointer" onclick="toggleFaq(this)">
+                    Does it hurt?
+                    <span class="faq-icon flex-shrink-0">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 5V15M5 10H15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    </span>
+                </button>
+                <div class="faq-content">
+                    <p class="text-[#5a6e5c] text-[0.9rem] md:text-[1rem] pb-4 pr-6 md:pr-8 mb-0">Not at all. Most people describe it as a light tapping or pulsing sensation. It's comfortable and fully adjustable. Many clients fall asleep during the session.</p>
+                </div>
+            </div>
+            <!-- FAQ 3 -->
+            <div class="faq-item border-b border-black/10">
+                <button class="w-full flex justify-between items-center py-4 min-h-[52px] bg-transparent border-none text-[#2C3338] font-heading text-[0.95rem] md:text-[1.35rem] text-left cursor-pointer" onclick="toggleFaq(this)">
+                    How many sessions until I feel something?
+                    <span class="faq-icon flex-shrink-0">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 5V15M5 10H15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    </span>
+                </button>
+                <div class="faq-content">
+                    <p class="text-[#5a6e5c] text-[0.9rem] md:text-[1rem] pb-4 pr-6 md:pr-8 mb-0">Many clients notice something after their first session: better sleep, reduced tension, more energy. PEMF has a cumulative effect, meaning results build over consistent sessions. We recommend starting with 3 sessions to gauge your response.</p>
+                </div>
+            </div>
+            <!-- FAQ 4 -->
+            <div class="faq-item border-b border-black/10">
+                <button class="w-full flex justify-between items-center py-4 min-h-[52px] bg-transparent border-none text-[#2C3338] font-heading text-[0.95rem] md:text-[1.35rem] text-left cursor-pointer" onclick="toggleFaq(this)">
+                    Do you accept insurance?
+                    <span class="faq-icon flex-shrink-0">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 5V15M5 10H15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    </span>
+                </button>
+                <div class="faq-content">
+                    <p class="text-[#5a6e5c] text-[0.9rem] md:text-[1rem] pb-4 pr-6 md:pr-8 mb-0">We don't bill insurance, but we make it easy to get started. Our intro offer is 3 sessions for $150. That's $50/session to experience the full cumulative effect before committing to anything further.</p>
+                </div>
+            </div>
+            <!-- FAQ 5 -->
+            <div class="faq-item border-b border-black/10">
+                <button class="w-full flex justify-between items-center py-4 min-h-[52px] bg-transparent border-none text-[#2C3338] font-heading text-[0.95rem] md:text-[1.35rem] text-left cursor-pointer" onclick="toggleFaq(this)">
+                    Where do sessions take place?
+                    <span class="faq-icon flex-shrink-0">
+                        <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M10 5V15M5 10H15" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg>
+                    </span>
+                </button>
+                <div class="faq-content">
+                    <p class="text-[#5a6e5c] text-[0.9rem] md:text-[1rem] pb-4 pr-6 md:pr-8 mb-0">We come to you. Mend is fully mobile. We bring the Pulse XL Pro to your home, gym, office, or wellness space in West LA. No commute, no waiting room.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mid-FAQ testimonial -->
+        <div class="max-w-[800px] mx-auto mt-8 p-5 md:p-8 rounded-xl text-center reveal" style="background: rgba(237,229,216,0.4); border: 1px solid rgba(122,158,126,0.15);">
+            <p class="font-body text-[1rem] md:text-[1.2rem] italic text-[#5a6e5c] leading-relaxed mb-4">"I come back for more because I feel like a completely different person. My body just feels... reset."</p>
+            <p class="text-gold font-bold mb-0">New Client, West LA</p>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== CTA ===================== -->
+<section class="py-12 md:py-20 text-center" style="background: #EDE5D8;">
+    <div class="max-w-[700px] mx-auto px-4 md:px-6 reveal">
+        <span class="inline-block px-4 py-1.5 rounded-full text-[0.75rem] md:text-[0.85rem] font-semibold mb-6 border pulse-badge" style="background: rgba(122,158,126,0.2); color:#7a9e7e; border-color: rgba(122,158,126,0.4);">Intro Offer: 3 Sessions for $150</span>
+        <h2 class="font-heading text-[1.6rem] md:text-[2.5rem] text-[#2C3338] mb-4">Still Dealing with Pain That Won't Quit?</h2>
+        <p class="text-[#5a6e5c] text-[0.95rem] md:text-[1.1rem] mb-4">If you've already tried chiropractors, massage, ice baths, and stretching and you're still not where you want to be, PEMF works differently. It works at the cellular level, helping your body do what it's already designed to do.</p>
+        <p class="text-[#2C3338] text-[1rem] md:text-[1.2rem] font-semibold mb-8 md:mb-10">What do you have to lose besides the pain?</p>
+        <div class="flex flex-col sm:flex-row gap-4 justify-center items-center">
+            <a href="https://calendly.com/mendmobilewellness/mend-first-time-pemf-session-60-mins-clone?back=1&month=2026-04" class="btn-gold inline-flex items-center justify-center w-full sm:w-auto px-8 py-3.5 rounded text-[0.8rem] font-bold uppercase tracking-wider" style="color:#ffffff; text-decoration:none;">Book a Session</a>
+            <a href="tel:7022774395" class="btn-outline inline-flex items-center justify-center w-full sm:w-auto px-8 py-3.5 rounded text-[0.8rem] font-bold uppercase tracking-wider" style="text-decoration:none;">Call / Text Us</a>
+        </div>
+    </div>
+</section>
+
+<!-- ===================== FOOTER ===================== -->
+<footer class="py-16 pb-20 md:pb-16 text-center text-sm text-[#5a6e5c]" style="background: #EAE4DA;">
+    <div class="max-w-container mx-auto px-4 md:px-6">
+        <!-- Logo -->
+        <div class="flex items-center justify-center mb-8">
+            <img src="MEND_LOGO_TRANSPARENT.png" alt="Mend Mobile Wellness &amp; Recovery" class="h-24 md:h-28 w-auto">
+        </div>
+
+        <!-- Nav -->
+        <div class="flex flex-wrap justify-center gap-4 md:gap-8 mb-8">
+            <a href="#home"       class="text-[#2C3338] hover:text-gold transition-colors text-[0.85rem] md:text-[0.95rem] font-medium" style="text-decoration:none;">Home</a>
+            <a href="conditions.html" class="text-[#2C3338] hover:text-gold transition-colors text-[0.85rem] md:text-[0.95rem] font-medium" style="text-decoration:none;">Conditions</a>
+            <a href="#process"    class="text-[#2C3338] hover:text-gold transition-colors text-[0.85rem] md:text-[0.95rem] font-medium" style="text-decoration:none;">How It Works</a>
+            <a href="testimonials.html"    class="text-[#2C3338] hover:text-gold transition-colors text-[0.85rem] md:text-[0.95rem] font-medium" style="text-decoration:none;">Testimonials</a>
+            <a href="#faq"        class="text-[#2C3338] hover:text-gold transition-colors text-[0.85rem] md:text-[0.95rem] font-medium" style="text-decoration:none;">FAQ</a>
+            <a href="pricing.html" class="text-[#2C3338] hover:text-gold transition-colors text-[0.85rem] md:text-[0.95rem] font-medium" style="text-decoration:none;">Pricing</a>
+            <a href="about.html"  class="text-[#2C3338] hover:text-gold transition-colors text-[0.85rem] md:text-[0.95rem] font-medium" style="text-decoration:none;">About</a>
+            <a href="tel:7022774395" class="text-[#2C3338] hover:text-gold transition-colors text-[0.85rem] md:text-[0.95rem] font-medium" style="text-decoration:none;">Contact</a>
+        </div>
+
+        <!-- Social -->
+        <div class="flex justify-center gap-4 mb-8">
+            <a href="#" class="w-10 h-10 rounded-full border border-black/20 flex items-center justify-center text-[#5a6e5c] hover:text-gold hover:border-gold transition-all">
+                <svg width="18" height="18" fill="currentColor" viewBox="0 0 24 24"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg>
+            </a>
+            <a href="#" class="w-10 h-10 rounded-full border border-black/20 flex items-center justify-center text-[#5a6e5c] hover:text-gold hover:border-gold transition-all">
+                <svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24">
+                    <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+                    <circle cx="12" cy="12" r="4"/>
+                    <circle cx="17.5" cy="6.5" r="0.5" fill="currentColor"/>
+                </svg>
+            </a>
+        </div>
+
+        <!-- Legal -->
+        <div class="flex justify-center gap-6 mb-4 flex-wrap text-xs">
+            <a href="#" class="text-[#5a6e5c] hover:text-gold transition-colors" style="text-decoration:none;">Terms &amp; Conditions</a>
+            <span class="text-black/20">|</span>
+            <a href="#" class="text-[#5a6e5c] hover:text-gold transition-colors" style="text-decoration:none;">Privacy Policy</a>
+        </div>
+        <p class="text-xs text-[#5a6e5c] mb-0">© 2026 Mend Mobile Wellness &amp; Recovery. All Rights Reserved.</p>
+    </div>
+</footer>
+
+<!-- ===================== SCRIPTS ===================== -->
+<script>
+    // ---- Header scroll ----
+    const header = document.getElementById('header');
+    window.addEventListener('scroll', () => {
+        header.classList.toggle('header-scrolled', window.scrollY > 20);
+    });
+
+    // ---- Mobile menu ----
+    const toggle = document.getElementById('mobileToggle');
+    const mobileMenu = document.getElementById('mobileMenu');
+    toggle.addEventListener('click', () => mobileMenu.classList.toggle('open'));
+    mobileMenu.querySelectorAll('a').forEach(a => {
+        a.addEventListener('click', () => mobileMenu.classList.remove('open'));
+    });
+
+    // ---- Scroll reveal + bar animation ----
+    const revealEls = document.querySelectorAll('.reveal');
+    const revealObs = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+            if (entry.isIntersecting) {
+                entry.target.classList.add('active');
+                entry.target.querySelectorAll('.bar-fill').forEach(bar => {
+                    bar.style.width = bar.dataset.width;
+                });
+                revealObs.unobserve(entry.target);
+            }
+        });
+    }, { threshold: 0.12 });
+    revealEls.forEach(el => revealObs.observe(el));
+
+    // ---- FAQ accordion ----
+    function toggleFaq(btn) {
+        const item = btn.closest('.faq-item');
+        const wasOpen = item.classList.contains('open');
+        document.querySelectorAll('.faq-item').forEach(i => i.classList.remove('open'));
+        if (!wasOpen) item.classList.add('open');
+    }
+
+    // ---- Testimonial slider ----
+    let currentSlide = 0;
+    const track = document.getElementById('track');
+    const dots = document.querySelectorAll('.slider-dot');
+
+    function goToSlide(idx) {
+        currentSlide = idx;
+        track.style.transform = `translateX(-${idx * 100}%)`;
+        dots.forEach((d, i) => d.classList.toggle('active', i === idx));
+    }
+
+    goToSlide(0);
+
+    setTimeout(() => {
+        setInterval(() => goToSlide((currentSlide + 1) % 7), 5000);
+    }, 5000);
+
+    // ---- Hero Canvas ----
+    const canvas = document.getElementById('heroCanvas');
+    if (canvas) {
+        const ctx = canvas.getContext('2d');
+
+        function resizeCanvas() {
+            canvas.width = canvas.parentElement.offsetWidth;
+            canvas.height = canvas.parentElement.offsetHeight;
+        }
+        resizeCanvas();
+        window.addEventListener('resize', resizeCanvas);
+
+        const particles = Array.from({ length: 60 }, () => ({
+            x: Math.random() * canvas.width,
+            y: Math.random() * canvas.height,
+            r: Math.random() * 1.5 + 0.5,
+            vx: (Math.random() - 0.5) * 0.4,
+            vy: (Math.random() - 0.5) * 0.4,
+            o: Math.random() * 0.4 + 0.1
+        }));
+
+        function drawCanvas() {
+            ctx.clearRect(0, 0, canvas.width, canvas.height);
+            particles.forEach(p => {
+                p.x += p.vx; p.y += p.vy;
+                if (p.x < 0 || p.x > canvas.width)  p.vx *= -1;
+                if (p.y < 0 || p.y > canvas.height) p.vy *= -1;
+                ctx.beginPath();
+                ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+                ctx.fillStyle = `rgba(122,158,126,${p.o})`;
+                ctx.fill();
+            });
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const dx = particles[i].x - particles[j].x;
+                    const dy = particles[i].y - particles[j].y;
+                    const dist = Math.sqrt(dx*dx + dy*dy);
+                    if (dist < 140) {
+                        ctx.beginPath();
+                        ctx.strokeStyle = `rgba(122,158,126,${0.06 * (1 - dist/140)})`;
+                        ctx.lineWidth = 0.5;
+                        ctx.moveTo(particles[i].x, particles[i].y);
+                        ctx.lineTo(particles[j].x, particles[j].y);
+                        ctx.stroke();
+                    }
+                }
+            }
+            requestAnimationFrame(drawCanvas);
+        }
+        drawCanvas();
+    }
+</script>
+
+<!-- ===================== MOBILE STICKY BOOK BUTTON ===================== -->
+<div class="md:hidden fixed bottom-0 left-0 right-0 z-50 px-4 py-3" style="background: rgba(245,240,232,0.97); backdrop-filter: blur(12px); border-top: 1px solid rgba(122,158,126,0.2);">
+    <a href="https://calendly.com/mendmobilewellness/mend-first-time-pemf-session-60-mins-clone?back=1&month=2026-04" class="btn-gold w-full flex items-center justify-center py-3.5 rounded text-[0.8rem] font-bold uppercase tracking-wider" style="color:#ffffff; text-decoration:none;">Book a Session</a>
+</div>
+</body>
+</html>
