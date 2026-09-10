@@ -559,6 +559,17 @@
                         </div>
                     </div>
                 </div>
+                <!-- Slide 8 -->
+                <div class="slide">
+                    <div class="rounded-xl p-6 md:p-12 text-center border flex flex-col justify-center" style="min-height:auto; background:#EDE5D8; border-color: rgba(122,158,126,0.2); box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+                        <div class="text-gold tracking-widest mb-4">★★★★★</div>
+                        <p class="font-body text-[1rem] md:text-[1.4rem] italic text-[#2C3338] leading-relaxed mb-6">"Sage Rodriguez and MEND have helped me hugely in my recovery from back pain. His system, Pulse PEMF, is a very high quality system. He brings it TO YOU, even upstairs, and spends an hour per session. The pain has mainly resolved, and I can work on strength and recovery. No more pain meds or muscle relaxants."</p>
+                        <div class="mt-6">
+                            <span class="block text-gold font-bold">Ruth To</span>
+                            <span class="text-[0.85rem] text-[#7a9e7e] uppercase tracking-widest">Google Review · Back Pain Recovery</span>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- Dots -->
@@ -570,6 +581,7 @@
                 <button class="slider-dot" onclick="goToSlide(4)" aria-label="Slide 5"></button>
                 <button class="slider-dot" onclick="goToSlide(5)" aria-label="Slide 6"></button>
                 <button class="slider-dot" onclick="goToSlide(6)" aria-label="Slide 7"></button>
+                <button class="slider-dot" onclick="goToSlide(7)" aria-label="Slide 8"></button>
             </div>
         </div>
 
@@ -701,7 +713,7 @@
     goToSlide(0);
 
     setTimeout(() => {
-        setInterval(() => goToSlide((currentSlide + 1) % 7), 5000);
+        setInterval(() => goToSlide((currentSlide + 1) % 8), 5000);
     }, 5000);
 
     // ---- Hero Canvas ----
