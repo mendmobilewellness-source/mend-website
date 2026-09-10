@@ -72,7 +72,10 @@
             font-family: 'DM Sans', sans-serif;
             -webkit-font-smoothing: antialiased;
             overflow-x: hidden;
+            opacity: 0;
+            transition: opacity 0.3s ease;
         }
+        body.loaded { opacity: 1; }
 
         /* ---- Gradient Utilities ---- */
         .grad-gold { background: linear-gradient(135deg, #7a9e7e 0%, #9ab89e 100%); }
@@ -633,6 +636,18 @@
 <!-- ===================== SCRIPTS ===================== -->
 <script>
     // ---- Header scroll ----
+    // ---- Page transitions ----
+    requestAnimationFrame(() => document.body.classList.add('loaded'));
+    document.addEventListener('click', (e) => {
+        const link = e.target.closest('a[href]');
+        if (!link || link.target === '_blank') return;
+        const href = link.getAttribute('href');
+        if (!href || href.startsWith('http') || href.startsWith('#') || href.startsWith('tel:') || href.startsWith('mailto:')) return;
+        e.preventDefault();
+        document.body.classList.remove('loaded');
+        setTimeout(() => { window.location.href = href; }, 250);
+    });
+
     const header = document.getElementById('header');
     window.addEventListener('scroll', () => {
         header.classList.toggle('header-scrolled', window.scrollY > 20);
@@ -648,6 +663,13 @@
 
     // ---- Scroll reveal + bar animation ----
     const revealEls = document.querySelectorAll('.reveal');
+    const revealParentCounts = new Map();
+    revealEls.forEach(el => {
+        const parent = el.parentElement;
+        const idx = revealParentCounts.get(parent) || 0;
+        revealParentCounts.set(parent, idx + 1);
+        el.style.transitionDelay = `${Math.min(idx * 90, 360)}ms`;
+    });
     const revealObs = new IntersectionObserver((entries) => {
         entries.forEach(entry => {
             if (entry.isIntersecting) {
