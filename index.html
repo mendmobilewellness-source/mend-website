@@ -521,6 +521,17 @@
                         </div>
                     </div>
                 </div>
+                <!-- Slide 7 -->
+                <div class="slide">
+                    <div class="rounded-xl p-6 md:p-12 text-center border flex flex-col justify-center" style="min-height:auto; background:#EDE5D8; border-color: rgba(122,158,126,0.2); box-shadow: 0 10px 30px rgba(0,0,0,0.2);">
+                        <div class="text-gold tracking-widest mb-4">★★★★★</div>
+                        <p class="font-body text-[1rem] md:text-[1.4rem] italic text-[#2C3338] leading-relaxed mb-6">"Sage is really great. I have rheumatoid arthritis and he went above and beyond to customize my PEMF treatments. Very thoughtful and gentle as well as a great resource for all things wellness!"</p>
+                        <div class="mt-6">
+                            <span class="block text-gold font-bold">Elsa Cheng</span>
+                            <span class="text-[0.85rem] text-[#7a9e7e] uppercase tracking-widest">Google Review · Rheumatoid Arthritis</span>
+                        </div>
+                    </div>
+                </div>
             </div>
 
             <!-- Dots -->
@@ -531,6 +542,7 @@
                 <button class="slider-dot" onclick="goToSlide(3)" aria-label="Slide 4"></button>
                 <button class="slider-dot" onclick="goToSlide(4)" aria-label="Slide 5"></button>
                 <button class="slider-dot" onclick="goToSlide(5)" aria-label="Slide 6"></button>
+                <button class="slider-dot" onclick="goToSlide(6)" aria-label="Slide 7"></button>
             </div>
         </div>
 
@@ -724,7 +736,7 @@
     goToSlide(0);
 
     setTimeout(() => {
-        setInterval(() => goToSlide((currentSlide + 1) % 6), 5000);
+        setInterval(() => goToSlide((currentSlide + 1) % 7), 5000);
     }, 5000);
 
     // ---- Hero Canvas ----
