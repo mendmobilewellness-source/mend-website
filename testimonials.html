@@ -231,8 +231,58 @@
             <p class="text-[#5a6e5c] text-[0.95rem] md:text-[1.05rem]">From Google and direct client feedback.</p>
         </div>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8" id="google-reviews-grid">
-            <p class="text-[#5a6e5c] text-center" style="grid-column: 1 / -1;">Loading reviews from Google…</p>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+
+            <!-- Sydney DuBowy -->
+            <div class="reveal rounded-xl p-6 md:p-8 border flex flex-col" style="background:#EDE5D8; border-color: rgba(122,158,126,0.2);">
+                <div class="text-gold tracking-widest mb-4">★★★★★</div>
+                <p class="text-[#5a6e5c] text-[0.95rem] italic leading-relaxed flex-1 mb-6">"I was struggling with leg pain before a big race, and the PEMF treatments saved me! I had spent nearly four weeks trying different treatment modalities with little success, and this was the only thing that worked and completely eliminated my pain. Sage was incredibly knowledgeable, professional, and easy to work with. Plus, the fact that he comes to you is amazing and makes the whole process so convenient. I'm so glad I found this service and would highly recommend!!"</p>
+                <div>
+                    <p class="font-semibold text-[#2C3338] text-[0.95rem] mb-1">Sydney DuBowy</p>
+                    <p class="text-[#7a9e7e] text-[0.8rem] uppercase tracking-wider font-semibold">Google Review · 3 months ago</p>
+                </div>
+            </div>
+
+            <!-- Caitlin Tinney -->
+            <div class="reveal rounded-xl p-6 md:p-8 border flex flex-col" style="background:#EDE5D8; border-color: rgba(122,158,126,0.2);">
+                <div class="text-gold tracking-widest mb-4">★★★★★</div>
+                <p class="text-[#5a6e5c] text-[0.95rem] italic leading-relaxed flex-1 mb-6">"I love this in home service so much, and Sage is an absolute gem! He's prompt, professional, and very kind. His PEMF technology is like nothing I've ever seen, or experienced. Not only is PEMF helping me recover from an arm injury, but it leaves me feeling super relaxed, in much less pain, and I sleep so well the night after treatment. 10/10 would recommend!"</p>
+                <div>
+                    <p class="font-semibold text-[#2C3338] text-[0.95rem] mb-1">Caitlin Tinney</p>
+                    <p class="text-[#7a9e7e] text-[0.8rem] uppercase tracking-wider font-semibold">Google Review · 6 months ago</p>
+                </div>
+            </div>
+
+            <!-- Keni Harrison -->
+            <div class="reveal rounded-xl p-6 md:p-8 border flex flex-col" style="background:#EDE5D8; border-color: rgba(122,158,126,0.2);">
+                <div class="text-gold tracking-widest mb-4">★★★★★</div>
+                <p class="text-[#5a6e5c] text-[0.95rem] italic leading-relaxed flex-1 mb-6">"As an Olympic medalist, I'm always looking for ways to take my recovery to the next level. Using PEMF has honestly been a huge help. I've seen faster recovery, better healing with injuries, and deeper sleep. And as an athlete, that quality sleep is everything. I wake up feeling more refreshed and ready to go."</p>
+                <div>
+                    <p class="font-semibold text-[#2C3338] text-[0.95rem] mb-1">Keni Harrison</p>
+                    <p class="text-[#7a9e7e] text-[0.8rem] uppercase tracking-wider font-semibold">Google Review · 5 months ago</p>
+                </div>
+            </div>
+
+            <!-- Sarah Spitz -->
+            <div class="reveal rounded-xl p-6 md:p-8 border flex flex-col" style="background:#EDE5D8; border-color: rgba(122,158,126,0.2);">
+                <div class="text-gold tracking-widest mb-4">★★★★★</div>
+                <p class="text-[#5a6e5c] text-[0.95rem] italic leading-relaxed flex-1 mb-6">"BEST news: Sage brings his PEMF treatment to YOU! I first encountered Sage at a Wellness Festival. I am by nature a skeptical person so I expected nothing. I've had a quad injury since 1998; after just a couple of minutes of this treatment, the pain was gone. His introductory package is AMAZINGLY generous AND affordable. I have been recommending him to friends since then."</p>
+                <div>
+                    <p class="font-semibold text-[#2C3338] text-[0.95rem] mb-1">Sarah Spitz</p>
+                    <p class="text-[#7a9e7e] text-[0.8rem] uppercase tracking-wider font-semibold">Google Review · 3 months ago</p>
+                </div>
+            </div>
+
+            <!-- Eric Parlee -->
+            <div class="reveal rounded-xl p-6 md:p-8 border flex flex-col" style="background:#EDE5D8; border-color: rgba(122,158,126,0.2);">
+                <div class="text-gold tracking-widest mb-4">★★★★★</div>
+                <p class="text-[#5a6e5c] text-[0.95rem] italic leading-relaxed flex-1 mb-6">"Sage provides excellent and knowledgeable service. The treatment sessions are making noticeable improvements in my strength and mobility."</p>
+                <div>
+                    <p class="font-semibold text-[#2C3338] text-[0.95rem] mb-1">Eric Parlee</p>
+                    <p class="text-[#7a9e7e] text-[0.8rem] uppercase tracking-wider font-semibold">Google Review · 5 months ago</p>
+                </div>
+            </div>
+
         </div>
 
         <!-- Google CTA -->
@@ -350,75 +400,7 @@
         requestAnimationFrame(drawCanvas);
     }
     drawCanvas();
-
-    // ---- Live Google Reviews ----
-    function starString(rating) {
-        const r = Math.max(0, Math.min(5, Math.round(rating || 5)));
-        return '★'.repeat(r) + '☆'.repeat(5 - r);
-    }
-
-    function renderGoogleReviews(reviews) {
-        const grid = document.getElementById('google-reviews-grid');
-        if (!grid) return;
-        grid.innerHTML = '';
-        if (!reviews || !reviews.length) {
-            const msg = document.createElement('p');
-            msg.className = 'text-[#5a6e5c] text-center';
-            msg.style.gridColumn = '1 / -1';
-            msg.textContent = 'See our latest reviews directly on Google below.';
-            grid.appendChild(msg);
-            return;
-        }
-        reviews.forEach(r => {
-            const card = document.createElement('div');
-            card.className = 'rounded-xl p-6 md:p-8 border flex flex-col';
-            card.style.background = '#EDE5D8';
-            card.style.borderColor = 'rgba(122,158,126,0.2)';
-
-            const stars = document.createElement('div');
-            stars.className = 'text-gold tracking-widest mb-4';
-            stars.textContent = starString(r.rating);
-            card.appendChild(stars);
-
-            const text = document.createElement('p');
-            text.className = 'text-[#5a6e5c] text-[0.95rem] italic leading-relaxed flex-1 mb-6';
-            text.textContent = '"' + r.text + '"';
-            card.appendChild(text);
-
-            const footer = document.createElement('div');
-            const name = document.createElement('p');
-            name.className = 'font-semibold text-[#2C3338] text-[0.95rem] mb-1';
-            name.textContent = r.author_name || 'Google User';
-            const sub = document.createElement('p');
-            sub.className = 'text-[#7a9e7e] text-[0.8rem] uppercase tracking-wider font-semibold';
-            sub.textContent = 'Google Review' + (r.relative_time_description ? ' · ' + r.relative_time_description : '');
-            footer.appendChild(name);
-            footer.appendChild(sub);
-            card.appendChild(footer);
-
-            grid.appendChild(card);
-        });
-    }
-
-    window.initGoogleReviews = function() {
-        if (!window.google || !google.maps.places) return;
-        const service = new google.maps.places.PlacesService(document.createElement('div'));
-        service.findPlaceFromQuery({ query: 'Mend Mobile Wellness & Recovery, West Los Angeles, CA', fields: ['place_id'] }, (results, status) => {
-            if (status !== google.maps.places.PlacesServiceStatus.OK || !results || !results[0]) {
-                renderGoogleReviews([]);
-                return;
-            }
-            service.getDetails({ placeId: results[0].place_id, fields: ['reviews'] }, (place, status2) => {
-                if (status2 !== google.maps.places.PlacesServiceStatus.OK || !place) {
-                    renderGoogleReviews([]);
-                    return;
-                }
-                renderGoogleReviews(place.reviews || []);
-            });
-        });
-    };
 </script>
-<script async src="https://maps.googleapis.com/maps/api/js?key=AIzaSyA_URhzi8OK0YcvZb6JX8RBeuExyVejRkY&libraries=places&callback=initGoogleReviews"></script>
 
 <!-- ===================== MOBILE STICKY BOOK BUTTON ===================== -->
 <div class="md:hidden fixed bottom-0 left-0 right-0 z-50 px-4 py-3" style="background: rgba(245,240,232,0.97); backdrop-filter: blur(12px); border-top: 1px solid rgba(122,158,126,0.2);">
